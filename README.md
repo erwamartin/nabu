@@ -1,5 +1,12 @@
 # Nabu project #
 
+## Installation ##
+
+    bundle install
+    rake db:migrate
+
+# Ruby On Rails #
+
 ## Migrations ##
     bundle exec rails g migration add_message_to_posts message:text
     bundle exec rails g migration add_published_to_posts published:boolean
