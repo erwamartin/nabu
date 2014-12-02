@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 
 gem 'mysql2', '~> 0.3.17'
 
+gem 'devise'
+
