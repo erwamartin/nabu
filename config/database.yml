@@ -38,6 +38,7 @@ development:
 
 test:
   <<: *default
+  database: ruby_project_test
 
 production:
   <<: *default
