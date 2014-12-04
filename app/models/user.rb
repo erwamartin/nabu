@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   end
 
   def update
-    #user = current_account.people.find(params[:id])
-    #user.update!(user_params)
-    #redirect_to user
+    user = User.find(params[:id])
+    user.update!(user_params)
+    redirect_to user
   end
 
   private
