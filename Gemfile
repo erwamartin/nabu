@@ -42,3 +42,8 @@ gem 'mysql2', '~> 0.3.17'
 
 gem 'devise'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
+
+gem 'database_cleaner', '~> 1.3.0'
