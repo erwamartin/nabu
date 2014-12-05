@@ -12,7 +12,7 @@ before_filter :configure_account_update_params, only: [:update]
   #   super
   # end
 
-  # GET /resource/edit
+  #GET /resource/edit
   # def edit
   #   super
   # end
