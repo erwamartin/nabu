@@ -1,0 +1,1292 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+
+/* =============================================================================
+   HTML5 element display
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ *    http://clagnut.com/blog/348/#c790
+ * 2. Force vertical scrollbar in non-IE
+ * 3. Remove Android and iOS tap highlight color to prevent entire container being highlighted
+ *    www.yuiblog.com/blog/2010/10/01/quick-tip-customizing-the-mobile-safari-tap-highlight-color/
+ * 4. Prevent iOS text size adjust on device orientation change, without disabling user zoom
+ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body { margin: 0; font-size: 14px; line-height: 1.231; }
+
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+/* 
+ * These selection declarations have to be separate
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+ * Also: hot pink!
+ */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:focus { outline: thin dotted; }
+
+/* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: 0; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+/* Redeclare monospace font family: en.wikipedia.org/wiki/User:Davidgothberg/Test59 */
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: gist.github.com/413930 */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
+li {list-style-type:none;}
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * Improve image quality when scaled in IE7
+ * code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; }
+
+/*
+ * Correct overflow displayed oddly in IE9 
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+/* 
+ * 1. Correct color not inheriting in IE6/7/8/9 
+ * 2. Correct alignment displayed oddly in IE6/7 
+ */
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor: pointer; }
+
+/*
+ * 1. Correct font-size not inheriting in all browsers
+ * 2. Remove margins in FF3/4 S5 Chrome
+ * 3. Define consistent vertical alignment display in all browsers
+ */
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ * 2. Correct inner spacing displayed oddly in IE6/7
+ */
+
+button, input { line-height: normal; *overflow: visible; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ */
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+
+/*
+ * Consistent box sizing and appearance
+ */
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+
+/* 
+ * Remove inner padding and border in FF3/4
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ 
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/* Remove default vertical scrollbar in IE6/7/8/9 */
+textarea { overflow: auto; vertical-align: top; }
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+
+/* =============================================================================
+   Primary styles
+   ========================================================================== */
+
+/*------ FONTS ------ */
+
+@font-face {
+    font-family: 'BentonSansMedium';
+    src: url('../font/BentonSans-Medium/bentonsans-medium.eot');
+    src: url('../font/BentonSans-Medium/bentonsans-medium.eot') format('embedded-opentype'),
+         url('../font/BentonSans-Medium/bentonsans-medium.woff') format('woff'),
+         url('../font/BentonSans-Medium/bentonsans-medium.ttf') format('truetype'),
+         url('../font/BentonSans-Medium/bentonsans-medium.svg#BentonSansMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'ProximaNovaLight';
+    src: url('../font/ProximaNova-Light/proximanova-light.eot');
+    src: url('../font/ProximaNova-Light/proximanova-light.eot') format('embedded-opentype'),
+         url('../font/ProximaNova-Light/proximanova-light.woff') format('woff'),
+         url('../font/ProximaNova-Light/proximanova-light.ttf') format('truetype'),
+         url('../font/ProximaNova-Light/proximanova-light.svg#ProximaNovaLight') format('svg');
+}
+
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url('../font/ProximaNova-Regular/proximanova-regular-webfont.eot');
+    src: url('../font/ProximaNova-Regular/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/ProximaNova-Regular/proximanova-regular-webfont.woff') format('woff'),
+         url('../font/ProximaNova-Regular/proximanova-regular-webfont.ttf') format('truetype'),
+         url('../font/ProximaNova-Regular/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bentonsansbold';
+    src: url('../font/BentonSans-Bold/bentonsans-bold-webfont.eot');
+    src: url('../font/BentonSans-Bold/bentonsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/BentonSans-Bold/bentonsans-bold-webfont.woff') format('woff'),
+         url('../font/BentonSans-Bold/bentonsans-bold-webfont.ttf') format('truetype'),
+         url('../font/BentonSans-Bold/bentonsans-bold-webfont.svg#bentonsansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bentonsansregular';
+    src: url('../font/BentonSans-Regular/bentonsans-regular-webfont.eot');
+    src: url('../font/BentonSans-Regular/bentonsans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/BentonSans-Regular/bentonsans-regular-webfont.woff') format('woff'),
+         url('../font/BentonSans-Regular/bentonsans-regular-webfont.ttf') format('truetype'),
+         url('../font/BentonSans-Regular/bentonsans-regular-webfont.svg#bentonsansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*------ GENERAL / STRUCTURE ------ */ 
+
+::-webkit-input-placeholder {
+   color: #c7c8cc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #c7c8cc;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #c7c8cc;  
+}
+
+:-ms-input-placeholder {  
+   color: #c7c8cc;  
+}
+
+body {
+  background-color:#efefec;
+  font-family: 'ProximaNovaLight';
+  color: #858585;
+}
+
+#wrapper{
+  position: relative;
+  width: 100%;
+}
+
+a, a:visited{
+  color:#c7c8cc;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.content {
+  background-color: #fff;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#left{
+  width:75%;
+  position: absolute;
+  height: 100%;
+}
+
+#right{
+  margin-left: 20%;
+  position: relative;
+  padding-bottom: 50px;
+} 
+
+/*------ ICONS ET AVATARS ------ */
+.icon-sync {
+  width:28px;
+}
+
+.icon-menu {
+  width: 23px;
+  margin-left: 20px;
+}
+
+.icon-search {
+  width: 18px;
+}
+
+.icon-titles {
+  width: 25px;
+}
+
+.avatar-main {
+  overflow:hidden;
+  -webkit-border-radius:100px;
+  -moz-border-radius:100px;
+  border-radius:100px;
+  border: 4px solid #fff;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+}
+
+.avatar-50{
+  width: 50px;
+  float: left;
+  overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+}
+.avatar-45{
+  width: 45px;
+  float: left;
+  overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+}
+.avatar-35, .icon-35{
+  width: 35px;
+  overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+}
+.avatar-30{
+  width: 30px;
+  overflow:hidden;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+}
+.avatar-feed {
+  margin: -5px 20px 10px 0;
+}
+
+
+/*------ SIDEBAR ------ */
+
+#sidebar {
+  width: 25%;
+  min-width: 240px;
+  max-width: 290px;
+  height: 100%;
+  background-color: #1c2227;
+  color:#ffffff;
+  text-align: center;
+}
+
+#sidebar-cover {
+  height: 150px;
+  width: 100%;
+  background: url("../img/PP_large_2.png") no-repeat center;
+  background-size: cover;
+  border-bottom: solid 3px #fe6258;
+}
+
+#sidebar .content {
+  background-color: transparent;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+#sidebar-content {
+margin-top: -80px;
+}
+
+#sidebar-content #badges{
+  background-color: #18181d;
+}
+
+#sidebar-content #badges p{
+  margin-bottom: 0;
+}
+
+.user-name {
+  font-family: 'BentonSansMedium';
+  font-size: 1.571em;
+  display: block;
+  margin:20px 0 30px 0;
+}
+
+#sidebar .content:nth-child(1) div {
+  display: inline-block;
+  width:45%;
+}
+#sidebar .content:nth-child(1){
+  margin-bottom: 20px;
+}
+
+.follow-number {
+  display: block;
+  font-family: 'BentonSansMedium';
+  color:#fe6258;
+  font-size: 2.071em;
+}
+
+#sidebar .badges {
+  width: 50px;
+  margin: 3%;
+}
+
+#sidebar h2 {
+  text-transform: uppercase;
+  font-size: 1.429em;
+  margin-bottom: 3px;
+  font-weight: normal;
+  margin-top: 25px;
+}
+
+#sidebar h2+span {
+  text-transform: uppercase;
+  color:#c7c8cc;
+  display: block;
+  margin-bottom: 20px;
+}
+
+#sidebar h3 {
+  text-align: left;
+  font-size: 1.286em;
+  font-weight: normal;
+  margin: 0 0 20px 5px;
+  font-family: 'bentonsansregular';
+}
+
+#sidebar #graph {
+  position: relative;
+}
+
+/*--graph dashboard---*/
+#graph ul{
+  margin: -10px 0 10px 0;
+  padding: 0;
+  left: 35%;
+  top:50%;
+}
+.data-activity {
+  opacity: 0.8;
+}
+.data-activity:hover {
+  opacity: 1;
+}
+#activity svg{
+  width: 100%;
+  height: 200px;
+}
+
+#activity svg text{
+  fill:#fff;
+  font-size: 2em;
+}
+
+.view-profile,.view-profile:visited{
+  color: #fff;
+  display: inline-block;
+}
+
+
+
+/*------ HAUT DE PAGE ------ */
+#top-content {
+  height: 10.714em;
+  padding: 0 0 0 20px;
+  position: relative;
+  overflow: visible;
+}
+
+#top-content div {
+  margin: auto 0;
+  position: relative;
+  top: 40%;
+}
+
+#search{
+  display: inline-block;
+  margin-top: 10px !important;
+}
+
+#search form div{
+  display: inline-block;
+  margin: 03px 0 0 -25px;
+}
+
+#search input{
+  border-radius: 20px;
+  border: none;
+  height: 1.786em;
+  width: 200px;
+  padding: 0 10px;
+  color: #c7c8cc;
+  font-family: 'BentonSansMedium';
+  font-weight: normal;
+  font-size: 1em;
+  float: left;
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s;
+}
+#search input:focus{
+  width: 250px;
+}
+
+#search-results {
+  margin: 22px 0 0 0 !important;
+  background-color: #fff;
+  width: 250px;
+  box-sizing: border-box;
+  position: absolute !important;
+}
+
+.users-result, .users-result li{
+  padding: 0;
+  margin: 0;
+}
+.users-result li a{
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  display: inline-block;
+  width: 100%;
+  padding: 3px 10px;
+}
+.users-result li a:hover{
+  color: #000;
+  padding-left: 10px;
+  background-color: #f9f9f9;
+}
+
+#logo a img, #menu p {
+  margin:auto;
+}
+#logo h1{
+  float: left;
+  margin: 0 20px 0 0; 
+}
+
+#menu {text-align: right;line-height: 5.500em;}
+
+
+/*------ FORMULAIRE POSTER CONTENU (Dashboard & iframe) ------ */
+#new-post{
+  padding: 25px 5px;
+}
+
+#new-post img{
+  margin: 0 25px;
+}
+#new-post img+div{
+  margin-left: 100px;
+}
+#new-post input, select{
+  border: solid #c7c8cc 1px;
+  border-radius: 2px;
+  color: #c7c8cc;
+  font-family: 'BentonSansMedium';
+  font-weight: normal;
+  font-size: 1em;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 95%;
+}
+.styled-select {
+  width: 150px;
+  height: 35px;
+  display: inline-block;
+  background: url(../img/dropdown.png) no-repeat #fff;
+  background-position:120px 12px;
+}
+#new-post .styled-select select {
+  width: 100%;
+   background: transparent;
+  -webkit-appearance: none;
+}
+#new-post input[type="submit"]{
+  width: 120px;
+  float: right;
+  color:#fff;
+  margin-right: 5%;
+  background-color: #fe6258;
+  border: none;
+}
+
+#new-post input[type="submit"]:hover{
+  animation: submithover 2s;
+-webkit-animation: submithover 2s;
+animation-iteration-count:infinite;
+-webkit-animation-iteration-count:infinite;
+}
+
+#new-post input[name="post_desc"]{
+  margin-bottom: 0;
+}
+
+input:required {background-color: #fff;}
+
+@keyframes submithover
+{
+0% {background-color: #fe6258;}
+50% {background-color: #ff786f;}
+100% {background-color: #fe6258;}
+}
+
+@-webkit-keyframes submithover /* Safari and Chrome */
+{
+0% {background-color: #fe6258;}
+50% {background-color: #ff786f;}
+100% {background-color: #fe6258;}
+}
+
+input[name="post_user_id"] {
+  display: none;
+}
+
+#form-extended{
+  display: none;
+}
+
+/*------ FEED/POSTS (Dashboard) ------ */
+
+.grid .col-7-12 .content:nth-child(2) {
+  background-color: transparent;
+  padding: 0;
+}
+
+.post-feed {
+  background-color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.post-feed p {
+  margin: 10px;
+  padding: 35px;
+  font-size: 1.143em;
+}
+
+.name, .name:visited {
+  color: #1c2227;
+  font-family: 'BentonSansMedium';
+}
+
+.tag{
+  width: 35px;
+  height: 10px;
+  float: left;
+  border-top: 3px solid #46d3ae;
+}
+
+.col-3-12 h2, .col-4-12 h2, #graph-wrapper h2, #posts-list h2, #bdg-list h2 {
+  font-family: 'bentonsansbold';
+  color:#8e9295;
+  font-size: 1.143em;
+  margin: 0;
+  padding: 20px 25px;
+  border-bottom: solid 3px #efefec;
+  text-align: left;
+  font-weight: normal;
+}
+
+/*------ COLONNE DE DROITE ------ */
+.col-3-12 h2 img,  .col-4-12 h2 img{
+  float: right;
+}
+
+.col-3-12 h3,  .col-4-12 h3 {
+  float: left;
+  clear: both;
+  margin:30px 20px 10px 20px;
+  font-size: 1em;
+}
+.col-3-12 h3 img,  .col-4-12 h3 img{
+  margin-right: 10px;
+}
+
+.col-3-12 h3+a,  .col-4-12 h3+a{
+  margin-top: 30px;
+  margin-right:20px; 
+  float: right;
+}
+
+.col-3-12 .avatar-45{
+  margin-right: 20px
+}
+.follow-button, .follow-button:visited{
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  background-color: #fe6258;
+  padding: 2px 10px 1px 10px;
+  text-transform: uppercase;
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  font-size: 0.857em;
+}
+
+.col-3-12 .content:nth-child(2){
+  text-align: center;
+}
+.col-3-12 .content:nth-child(2) p{
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+.col-3-12 .content:nth-child(2) a{
+  color: #1c2227;
+}
+.suggestion-category{
+  float: left;
+  height: 100%;
+  position: absolute;
+  padding-right: 20px;
+}
+.rond-category {
+  display: inline-block;
+  -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width: 20px;
+    height: 20px;
+    background-color: #fe6258;
+}
+
+.suggestion-article-wrapper, .suggestion-user-wrapper, .obj-progress{
+    clear: both;
+    padding: 20px 25px;
+    position: relative;
+}
+
+.suggestion-article-wrapper{
+    padding: 20px;
+    color: #45555f;
+}
+
+.sugg-wrap {
+  height: auto;
+  clear: both;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.post-link, .post-link:visited{
+  color: #fe6258;
+}
+
+.suggestion-article {
+  padding-left: 30px;
+}
+
+.suggestion-article .post-link{
+  font-size: 0.857em;
+}
+
+.obj-progressbar {
+  height: 10px; 
+  position: relative;
+  background-color: #ededed;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  display: inline-block;
+  width: 40%;
+  top: -12px;
+  margin: 0 15px;
+}
+
+#obj-list .obj-progressbar {
+  width: 90%;
+  top:0;
+  height: 15px;
+}
+
+.obj-progressbar > span {
+  display: block;
+  height: 100%;
+     -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+         -moz-border-radius-topright: 0px;
+      -moz-border-radius-bottomright: 0px;
+             border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+      -webkit-border-top-left-radius: 2px;
+   -webkit-border-bottom-left-radius: 2px;
+          -moz-border-radius-topleft: 2px;
+       -moz-border-radius-bottomleft: 2px;
+              border-top-left-radius: 2px;
+           border-bottom-left-radius: 2px;
+  background-color: #ff7461;
+  position: relative;
+  overflow: hidden;
+}
+
+/*----------STATS (profil)-----------*/
+.stats-wrapper {
+  display: inline-block;
+  width: 30%;
+  margin-right: 4% ;/*20px;*/
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  text-align: center;
+  font-family: 'BentonSansMedium';
+  font-size: 1.286em;
+  font-weight: none;
+  color: #8c9093;
+}
+
+.stats-wrapper .follow-number {
+  font-size: 2.222em;
+  font-family: 'bentonsansbold';
+}
+
+.stats-wrapper:nth-child(1) .follow-number {
+  color: #fe6258;
+}
+
+.stats-wrapper:nth-child(2) .follow-number {
+  color: #46d3ae;
+}
+
+.stats-wrapper:nth-child(3) .follow-number {
+  color: #42adc6;
+}
+
+#stats-followers:hover, #stats-following:hover {
+  cursor: pointer;
+  background-color: #18181d;
+  opacity: 0.8;
+}
+
+.stats-wrapper .content {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  padding-top: 20px;
+  height: 110px;
+  margin-bottom: 35px;
+}
+
+.stats-wrapper:last-child {
+  margin-right: 0px;
+}
+
+
+#graph-wrapper {
+  height: 290px;
+  width: 100%;
+  position: relative;
+}
+#graph-wrapper .styled-select {
+  border: none;
+  position: absolute;
+  right:10px;
+  top:20px;
+  height: 25px;
+  background-position: 130px 5px;
+}
+#graph-wrapper .styled-select select{
+  width: 100%;
+   background: transparent;
+  -webkit-appearance: none;
+  height: 25px;
+  padding: 5px 10px; 
+  /* border: none; */
+}
+
+/*------ LISTE DES POSTS (profil) ------ */
+.post-item {
+  width: 25%;
+  display: inline-block;
+  margin: 20px 3.125%;
+  text-align: left;
+  font-size: 1.143em;
+  border-bottom: solid 2px #efefef;
+  float: left;
+}
+.apercu {
+  width: 100%;
+  height: 125px;
+  background-color: #000;
+  border-bottom: solid 3px red;
+  margin-bottom: 10px;
+}
+
+#posts-list {
+  text-align: center;
+}
+
+/*------ PROPOSITION d'OBJ (profil) ------ */
+#top-right {
+  height: 195px;
+  position: relative; 
+  margin-bottom: 40px;
+  background-color: #46d3ae;
+  font-family: 'bentonsansregular';
+  color: #fff;
+  padding: 25px;
+}
+#top-right b {
+  font-family: 'bentonsansbold';
+}
+#top-right span:nth-child(1){
+  font-size: 1.286em;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+#top-right span:nth-child(2){
+  display: inline-block;
+  margin-bottom: 15px;
+}
+#top-right a,#top-right a:visited{
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+/*  padding-top: 8px;
+  height:40px;*/
+  width:180px;
+  line-height: 1.857em;
+  box-sizing:border-box;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  border: 2px solid #fff;
+  background-color: #7adfc5;
+  font-size: 1.286em;
+  font-family: 'bentonsansbold';
+}
+#top-right a:hover{
+  text-decoration: none;
+  animation: startobjhover 1s;
+  -webkit-animation: startobjhover 1s;
+  animation-iteration-count:infinite;
+  -webkit-animation-iteration-count:infinite;
+}
+
+@keyframes startobjhover
+{
+0% {background-color: #7adfc5;}
+50% {background-color: #8fe9d2;}
+100% {background-color: #7adfc5;}
+}
+
+@-webkit-keyframes startobjhover /* Safari and Chrome */
+{
+0% {background-color: #7adfc5;}
+50% {background-color: #8fe9d2;}
+100% {background-color: #7adfc5;}
+}
+
+#top-right img {
+  position: absolute;
+  right: 25px; 
+  bottom: 20px;
+  border: 3px solid #fff;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+}
+
+/*------ LISTE DES OBJECTIFS (profil) ------ */
+#obj-list {
+  height: 200px;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+}
+#obj-list p {
+  margin: 5px 0;
+  font-size: 1.143em;
+}
+#obj-list p img{
+  margin-top: 5px;
+}
+#obj-list > div{
+  padding: 20px;
+}
+
+
+/*------ LISTES DES FOLLOWERS / FOLLOWINGS ------ */
+.list-follow{
+  text-align: left;
+  padding: 0 !important;
+  position: relative;
+  display: none;
+  margin-bottom: 30px !important;
+  max-height: 280px;
+  overflow: auto;
+}
+.list-follow h3{
+  margin-left: 20px !important;
+}
+.list-follow .close {
+  position: absolute;
+  top:1px;
+  right: 10px;
+}
+.list-follow ul{
+  padding: 0 ;
+}
+.list-follow li{
+  height: 50px;
+  background-color: #242a2f;
+  line-height: 15px ;
+  margin-bottom: 2px;
+  padding: 10px 20px;
+}
+
+.list-follow li a{
+  display: block;
+  padding: 10px 10px 10px 40px;
+}
+.list-follow li img{
+  position: absolute;
+  left: 20px;
+}
+
+/*------ BOUTONS (UN)FOLLOW (profil) ------ */
+.profile-follow-button,.profile-unfollow-button {
+  width: 150px;
+  padding: 10px 0;
+  text-align: center;
+  display: block;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  margin: 15px auto;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.profile-unfollow-button {
+ border: 1px solid #ff7461;
+}
+
+.profile-follow-button {
+  background-color: #ff7461;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.profile-follow-button:hover {
+  background-color: #ff9283;
+  text-decoration: none;
+}
+
+/*------ LISTE DES BADGES ------ */
+
+#bdg-list{
+  padding-bottom: 30px;
+}
+
+#bdg-list #display_badges {
+  padding: 30px 10px;
+  position: relative;
+}
+
+#bdg-list .bdg-wrap {
+  display: inline-block;
+  float: left;
+  width: 90px;
+  text-align: center;
+  margin: 0 20px;
+  font-family: 'proxima_nova_rgregular';
+  font-size: 1.143em;
+  color: #bababa;
+}
+
+#bdg-list .badges { 
+  width: 80px;
+  height: 80px;
+}
+
+
+#canvas-graph {
+  width: 500px;
+  height: 250px;
+}
+
+/*------ CLASSES CATEGORIES ------ */
+
+#graph .cat1,#graph .cat2,#graph .cat3,#graph .cat4,#graph .cat5 {
+background-color: #ff7461;
+color: #ff7461;
+}
+
+#graph .cat6,#graph .cat7,#graph .cat8,#graph .cat9,#graph .cat10 {
+background-color: #46d3ae;
+color: #46d3ae;
+}
+
+#graph .cat11,#graph .cat12,#graph .cat13,#graph .cat14, #graph .cat15 {
+background-color: #fcaf63;
+color: #fcaf63;
+}
+
+#graph .cat16, #graph .cat17, #graph .cat18, #graph .cat19, #graph .cat20 {
+background-color: #ff8395;
+color: #ff8395;
+}
+
+#graph .cat21, #graph .cat22, #graph .cat23, #graph .cat24, #graph .cat25{
+background-color: #b78bbb;
+color: #b78bbb;
+} 
+
+#graph .cat26, #graph .cat27, #graph .cat28, #graph .cat29, #graph .cat30, #graph .cat31, #graph .cat32, #graph .cat33, #graph .cat34, #graph .cat35, #graph .cat36, #graph .cat37, #graph .cat38, #graph .cat39 {
+background-color: #ffe97b;
+color: #ffe97b;
+}
+
+/*------ CATEGORIES POUR GRAPH ------ */
+
+#graph .cat1,#graph .cat2,#graph .cat3,#graph .cat4,#graph .cat5 {
+background-color: transparent;
+color: #ff7461;
+}
+
+#graph .cat6,#graph .cat7,#graph .cat8,#graph .cat9,#graph .cat10 {
+  background-color: transparent;
+color: #46d3ae;
+}
+
+#graph .cat11,#graph .cat12,#graph .cat13,#graph .cat14, #graph .cat15 {
+  background-color: transparent;
+color: #fcaf63;
+}
+
+#graph .cat16, #graph .cat17, #graph .cat18, #graph .cat19, #graph .cat20 {
+  background-color: transparent;
+color: #ff8395;
+}
+
+#graph .cat21, #graph .cat22, #graph .cat23, #graph .cat24, #graph .cat25{
+  background-color: transparent;
+color: #b78bbb;
+} 
+
+#graph .cat26, #graph .cat27, #graph .cat28, #graph .cat29, #graph .cat30, #graph .cat31, #graph .cat32, #graph .cat33, #graph .cat34, #graph .cat35, #graph .cat36, #graph .cat37, #graph .cat38, #graph .cat39 {
+background-color: transparent;
+color: #ffe97b;
+}
+
+/*------ IFRAME EXTENSION CHROME -----*/
+.iframe {
+  margin:20px;
+}
+.iframe #infos {
+  background-color: transparent;
+}
+
+.iframe #infos a {
+  margin-right: 20px;
+}
+
+.iframe .user-name {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.iframe #new-post{
+  width: 85%;
+}
+
+.iframe #form-extended {
+  display: block;
+}
+
+
+
+/* =============================================================================
+   Non-semantic helper classes
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide for both screenreaders and browsers:
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+
+/* =============================================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+
+@media screen and (max-width: 1200px) {
+  #wrapper {
+    width: 1190px;
+  }
+  #right {
+    margin-left: 260px;
+  }
+  #canvas-graph {
+    width: 430px;
+    height: 250px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrapper {
+    width: 100%;
+  }
+  #right {
+    margin-left: 50px;
+  }
+  #sidebar {
+    width: 250px;
+    position: absolute;
+    left:-220px;
+    transition: left 0.7s;
+  -webkit-transition: left 0.7s;
+  z-index:100;
+  }
+  #sidebar:hover {
+    left:0px;
+  }
+}
+
+
+/* =============================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+
+
