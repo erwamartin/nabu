@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
-  def index
-    @posts = Post.all
-  end
+  # def index
+  #   @posts = Post.all
+  # end
 
   def show
     @post = Post.find(params[:id])
@@ -13,18 +13,21 @@ class PostsController < ApplicationController
   end
 
   def create
-    if !Hashtag.where("name = ?", params[:post][:hashtag])
-      hashtag = Hashtag.create(name: params[:post][:hashtag])
-    else
+    if Hashtag.exists?(:name => params[:post][:hashtag])
       hashtag = Hashtag.where("name = ?", params[:post][:hashtag])
+      htag_id = hashtag.first.id
+    else
+      hashtag = Hashtag.create(name: params[:post][:hashtag])
+      htag_id = hashtag.id
     end
 
-    @post = Post.create(user_id: 1, url: params[:post][:url], hashtag_id: hashtag.first.id, content: params[:post][:content])
+    #### TODO: USER_ID A DEFINIR EN FONCTION DE CURRENT_USER
+    @post = Post.create(user_id: 1, url: params[:post][:url], hashtag_id: htag_id, content: params[:post][:content])
 
     if @post.save
-      redirect_to posts_path, :notice => "Your post was saved!"
+      redirect_to root_path, :notice => "Votre post a bien été envoyé"
     else
-      render 'new'
+      redirect_to root_path, :alert => "Une erreur est survenue, veuillez réessayer svp"
     end
   end
 
@@ -32,6 +35,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to posts_path, :notice => "Your post has been deleted"
+    redirect_to root_path, :notice => "Votre post a bien été supprimé"
   end
 end

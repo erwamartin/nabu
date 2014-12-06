@@ -52,19 +52,30 @@
          <div class="content" id="new-post"><!-- NEW POST -->
             <img src="img/PP_large_2.png" class="avatar-50" alt="">
             <div>
-              <form name="post-article" id="post_article" method="post">
-              <input type="url" name="post_url" id="url" placeholder="Insérez une URL pour ajouter un contenu" required><br>
-              <div id="form-extended">
-                <input type="text" name="post_desc" id="desc" placeholder="Message accompagnant le contenu" required><br>
-                <input type="text" name="post_user_id" value=""><br>
-                <input type="submit" value="Publier">
-              </div>
-          </form>
-       </div>
-       </div><!-- END NEW POST -->
+              <!-- <form name="post-article" id="post_article" method="post">
+                <input type="url" name="post_url" id="url" placeholder="Insérez une URL pour ajouter un contenu" required><br>
+                <div id="form-extended">
+                  <input type="text" name="post_desc" id="desc" placeholder="Message accompagnant le contenu" required><br>
+                  <input type="text" name="post_user_id" value=""><br>
+                  <input type="submit" value="Publier">
+                </div>
+            </form> -->
+            <%= form_for :post, url: "/" do |f| %>
+              <p>URL : <%= f.text_field :url %></p>
+              <p>Decription : <%= f.text_field :content %></p>
+              <p>#<%= f.text_field :hashtag %></p>
+              <%= f.submit "Envoi" %>
+            <% end %>
+           </div>
+         </div><!-- END NEW POST -->
        <div class="content"><!-- FEED -->
           <section id="zone_post">
-
+            <% @posts.reverse_each do |post| %>
+            <p>
+              <%= post.user.username %> : <%= link_to post.content, post %> # <%= link_to post.hashtag.name, post %>  |  <%= link_to post.url, post.url %> <br>
+              Il y a <%= time_ago_in_words(post.created_at) %>
+            </p>
+          <% end %>
           </section>
          </div><!-- END FEED -->
       </div><!-- END CENTRAL COLUMN -->

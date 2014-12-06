@@ -1,4 +1,4 @@
 <h1>Posté par <%= @post.user.username %></h1>
 <p>URL : <%= @post.url %> // <%= @post.content %> </p>
 <p><%= @post.hashtag.name %></p>
-<small><%= link_to "Supprimer",  @post, :method => :delete  %></small>
+<small><%= link_to "Supprimer",  @post, :method => :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?' }  %></small>
