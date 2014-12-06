@@ -1,2 +1,4 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>Posté par <%= @post.user.username %></h1>
+<p>URL : <%= @post.url %> // <%= @post.content %> </p>
+<p><%= @post.hashtag.name %></p>
+<small><%= link_to "Supprimer",  @post, :method => :delete  %></small>
