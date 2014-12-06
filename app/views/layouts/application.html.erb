@@ -2,7 +2,11 @@
 <html>
 <head>
   <title>Nabu</title>
-  <%= yield :header %>
+  <%= stylesheet_link_tag 'style' %>
+  <%= stylesheet_link_tag 'simplegrid' %>
+  <%= stylesheet_link_tag 'app' %>
+  <%= stylesheet_link_tag 'component' %>
+  <%= javascript_include_tag 'custom.modernizr' %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag :application %>
 </head>
@@ -14,10 +18,91 @@
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
+<div id="wrapper">  
+  <div id="left"><!-- LEFT PART -->
+    <div id="sidebar"><!-- SIDEBAR -->
+      <div id="sidebar-cover"></div>
+      <div id="sidebar-content">
+         <div class="content">
+          <img src="public/img/PP_large_2.png" class="avatar-main" alt=""><br>
+          <span class="user-name">Username</span>
+          <div id="stats-followers"><span class="follow-number" id="nb_followers">4</span> followers</div>
+          <div id="stats-following"><span class="follow-number" id="nb_following">4</span> following</div>
+            <a class="profile-unfollow-button" href="user/follow/2/" id="follow_button">Suivre</a>
+         </div>
+         <div class="content list-follow followers">
+          <h3>Followers</h3>
+          <a href="#" class="close"><img src="public/img/icons/close.png" alt=""></a>
+          <ul>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Marion"><a href="user/1">Marion</a></li>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Valentin"><a href="user/3">Valentin</a></li>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Lucie"><a href="user/20">Lucie</a></li>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="erwamartin"><a href="user/16">erwamartin</a></li>
+          </ul>
+         </div>
+         <div class="content list-follow following">
+          <h3>Followings</h3>
+          <a href="#" class="close"><img src="public/img/icons/close.png" alt=""></a>
+          <ul>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Francois"><a href="user/11">Francois</a></li>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Loïc"><a href="user/5">Loïc</a></li>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="erwamartin"><a href="user/16">erwamartin</a></li>
+            <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Lucie"><a href="user/20">Lucie</a></li>
+          </ul>
+         </div>
+      </div>
+    </div><!-- END SIDEBAR -->
+  </div><!-- END LEFT PART -->
 
-  <%= yield %>
+  <div id="right"><!-- RIGHT PART -->
+    <div class="grid grid-pad" id="top-content"><!-- GRID LOGO/SEARCH/MENU -->
+      <div class="col-7-12" id="logo"><!-- LOGO AND SEARCHBAR -->
+          <h1><a href="/"><img src="img/logo_nabu.svg" alt="Nabu"></a></h1>
+          <div id="search">
+            <form action="users/search" method="post">
+            <input type="text" name="name" autocomplete="off" placeholder="Rechercher un ami"><div><img src="img/icons/loupe.svg"  class="icon-search" alt="Rechercher"></div>
+            </form>
+            <div id="search-results"><ul class="users-result"></ul></div>
+          </div>
+      </div><!-- END LOGO AND SEARCHBAR -->
+      <div class="col-3-12" id="menu"><!-- MENU -->
+        <p><a href="user/"><img src="img/icons/user.svg" class="icon-menu" alt="Profil"></a> <a class="md-trigger" data-modal="modal-settings" ><img src="img/icons/settings.svg" class="icon-menu" alt="Paramètres"></a><a href="user/signout"><img src="img/icons/power.svg" class="icon-menu" alt="Déconnexion"></a></p>
+      </div><!-- END MENU -->
+    </div><!-- END GRID LOGO/SEARCH/MENU -->
 
-  <%= yield :footer %>
+    <div class="grid grid-pad"><!-- GRID CONTENT -->
+      
+       <%= yield %>
+
+    </div><!-- END GRID CONTENT -->
+      </div><!-- END RIGHT PART -->
+    </div>
+
+    <!--popup settings : html popup + scripts-->
+
+
+    <div class="md-modal md-effect-10" id="modal-settings">
+      <div class="md-content">
+        <h3>Modifiez vos infos</h3>
+        <div>
+          <button class="md-close">Close me!</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-overlay"></div><!-- the overlay element -->
+
+    <%= javascript_include_tag 'cssParser' %>
+    <%= javascript_include_tag 'css-filters-polyfill' %>
+    <%= javascript_include_tag 'classie' %>
+    <%= javascript_include_tag 'modalEffects' %>
+    <%= javascript_include_tag 'modernizr.custom' %>
+    <%= javascript_include_tag 'http://code.jquery.com/jquery-1.10.2.min.js' %>
+    <%= javascript_include_tag 'snap.svg' %>
+    <%= javascript_include_tag 'User' %>
+    <%= javascript_include_tag 'UserDashboard' %>
+    <%= javascript_include_tag 'nabu' %>
+    <%= javascript_include_tag 'update' %>
 
 </body>
 </html>

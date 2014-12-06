@@ -10,23 +10,23 @@ User.getUserId();
 var url=window.location.href;
 
 if(url.lastIndexOf("dashboard")>0){
-	//timeAgo
-	jQuery.timeago.settings.strings = {
-   // environ ~= about, it's optional
-   prefixAgo: "il y a",
-   prefixFromNow: "d'ici",
-   seconds: "moins d'une minute",
-   minute: "environ une minute",
-   minutes: "environ %d minutes",
-   hour: "environ une heure",
-   hours: "environ %d heures",
-   day: "environ un jour",
-   days: "environ %d jours",
-   month: "environ un mois",
-   months: "environ %d mois",
-   year: "un an",
-   years: "%d ans"
-};
+// 	//timeAgo
+// 	jQuery.timeago.settings.strings = {
+//    // environ ~= about, it's optional
+//    prefixAgo: "il y a",
+//    prefixFromNow: "d'ici",
+//    seconds: "moins d'une minute",
+//    minute: "environ une minute",
+//    minutes: "environ %d minutes",
+//    hour: "environ une heure",
+//    hours: "environ %d heures",
+//    day: "environ un jour",
+//    days: "environ %d jours",
+//    month: "environ un mois",
+//    months: "environ %d mois",
+//    year: "un an",
+//    years: "%d ans"
+// };
 	//DASH
 	UserDashboard.getNewPosts(1);
 	UserDashboard.getSuggestArticles();
@@ -109,26 +109,26 @@ $('input[name="name"]').on('keyup',function(e){
 
 
 	//post
-$('#post_article').submit(function () {
-				UserDashboard.post();
-                $('#url').val('').focus(); // Vide la zone de Chat et remet le focus dessus
-				$('#desc').val('').focus();
-                return false; // Permet de bloquer l'envoi "classique" du formulaire
-});
+// $('#post_article').submit(function () {
+// 				UserDashboard.post();
+//                 $('#url').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+// 				$('#desc').val('').focus();
+//                 return false; // Permet de bloquer l'envoi "classique" du formulaire
+// });
 
-	//GRAPH
-$("#post_cat_user").on("change", function() {
-   // var $form = $("#graphForm");
-   User.getGraphProfile($("#post_cat_user").val());
+// 	//GRAPH
+// $("#post_cat_user").on("change", function() {
+//    // var $form = $("#graphForm");
+//    User.getGraphProfile($("#post_cat_user").val());
 
-});
+// });
 
 /*------INTERFACE ------*/
 
-$('input[name="post_url"]').on('focus',function(){
+$('input[id="post_url"]').on('focus',function(){
 	$('#form-extended').fadeIn(400);
 });
-$('input[name="post_url"]').on('blur',function(){
+$('input[id="post_url"]').on('blur',function(){
 	if( !$(this).val() ) {
 		$('#form-extended').fadeOut(400);
 	}
