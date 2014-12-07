@@ -21,8 +21,7 @@ class PostsController < ApplicationController
       htag_id = hashtag.id
     end
 
-    #### TODO: USER_ID A DEFINIR EN FONCTION DE CURRENT_USER
-    @post = Post.create(user_id: 1, url: params[:post][:url], hashtag_id: htag_id, content: params[:post][:content])
+    @post = Post.create(user_id: current_user.id, url: params[:post][:url], hashtag_id: htag_id, content: params[:post][:content])
 
     if @post.save
       redirect_to root_path, :notice => "Votre post a bien été envoyé"
