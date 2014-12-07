@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   def create
+    puts "create_user_wesh"
     User.create(params[:user])
   end
 
