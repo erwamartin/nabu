@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png']
 
   def create
-    puts "create_user_wesh"
     User.create(params[:user])
   end
 
