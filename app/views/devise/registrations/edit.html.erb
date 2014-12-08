@@ -33,11 +33,6 @@
     <%= f.password_field :password_confirmation, :class =>"form-field form-field--wlabel", autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password, :class => "field-label" %> <i class="form-field-helper">(Obligatoire pour valider les modifications)</i>
-    <%= f.password_field :current_password, :class =>"form-field form-field--wlabel", autocomplete: "off" %>
-  </div>
-
   <div class="actions align-center">
     <%= f.submit "Enregistrer", :class => "form-field centered" %>
   </div>

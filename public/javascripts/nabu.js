@@ -135,3 +135,9 @@ $('#sidebar #stats-following, .following .close').on('click',function(e){
 	if($('.followers').is(':visible')){$('.followers').hide()}
 	$('.following').fadeToggle(200);
 });
+
+window.setTimeout(function() {
+  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();
+  });
+}, 3000);
