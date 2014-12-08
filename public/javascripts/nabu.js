@@ -10,23 +10,6 @@ User.getUserId();
 var url=window.location.href;
 
 if(url.lastIndexOf("dashboard")>0){
-// 	//timeAgo
-// 	jQuery.timeago.settings.strings = {
-//    // environ ~= about, it's optional
-//    prefixAgo: "il y a",
-//    prefixFromNow: "d'ici",
-//    seconds: "moins d'une minute",
-//    minute: "environ une minute",
-//    minutes: "environ %d minutes",
-//    hour: "environ une heure",
-//    hours: "environ %d heures",
-//    day: "environ un jour",
-//    days: "environ %d jours",
-//    month: "environ un mois",
-//    months: "environ %d mois",
-//    year: "un an",
-//    years: "%d ans"
-// };
 	//DASH
 	UserDashboard.getNewPosts(1);
 	UserDashboard.getSuggestArticles();
@@ -56,21 +39,21 @@ User.getUserBadges();
 
 //ACTIONS
 
-	//SCROLL INFINI
-$(window).scroll(function(){
-	//console.log($(document).scrollTop()+" "+$(document).scr+" "+$(window).scrollTop());
-	if($(window).scrollTop()>=(0.6*$(window).height())){
-	//if(($(window).scrollTop()+$(document).scrollHeight)>=(0.9*$(window).height())){
-		//alert($(window).scrollTop())
-		if(finish==true)
-			UserDashboard.getOldPosts();
-		//console.log("scroll!!");
-		//finish=false;
+// 	//SCROLL INFINI
+// $(window).scroll(function(){
+// 	//console.log($(document).scrollTop()+" "+$(document).scr+" "+$(window).scrollTop());
+// 	if($(window).scrollTop()>=(0.6*$(window).height())){
+// 	//if(($(window).scrollTop()+$(document).scrollHeight)>=(0.9*$(window).height())){
+// 		//alert($(window).scrollTop())
+// 		if(finish==true)
+// 			UserDashboard.getOldPosts();
+// 		//console.log("scroll!!");
+// 		//finish=false;
 		
 	
-	}
+// 	}
 	
-});
+// });
 
 	//suggestions
 $('#suggest_articles_button').on('click',function(e){

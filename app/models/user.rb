@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :username,  presence: true, uniqueness: true
   has_many :posts
 
-  has_attached_file :picture, :styles => { :small => "300x300>", :thumb => "100x100#"  },
+  has_attached_file :picture, :styles => { :sidebar => "480x300>", :small => "300x300>", :thumb => "100x100#"  },
   				  :default_url => "/images/:style/missing.png",
                   :url  => "/assets/pictures/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/pictures/:id/:style/:basename.:extension"

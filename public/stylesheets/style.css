@@ -313,6 +313,14 @@ a:hover{
   padding-bottom: 50px;
 } 
 
+.align-center {
+  text-align: center;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
 /*------ ICONS ET AVATARS ------ */
 .icon-sync {
   width:28px;
@@ -374,6 +382,68 @@ a:hover{
   margin: -5px 20px 10px 0;
 }
 
+img.blur { -webkit-filter: blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter: blur(3px); filter: blur(3px); }
+img.full { width: 100%; }
+img.res  { max-width: 100%; }
+
+/*------ FORM -------*/
+form label {
+  display: inline-block;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.form-field {
+  border: solid #c7c8cc 1px;
+  border-radius: 2px;
+  color: #c7c8cc;
+  font-family: 'BentonSansMedium';
+  font-weight: normal;
+  font-size: 1em;
+  padding: 10px;
+}
+
+.form-field--full {
+  width: 100%;
+}
+
+.form-field--wlabel {
+  width: 79%;
+}
+
+.field {
+  margin: 20px 0;
+  position: relative;
+}
+
+.field-label {
+  width: 20%;
+}
+
+.form-field-helper {
+  position: absolute;
+  font-size: .8em;
+  bottom: -13px;
+}
+
+input[type="submit"]{
+  color:#fff;
+  background-color: #fe6258;
+  border: none;
+}
+
+input[type="submit"]:hover{
+  animation: submithover 2s;
+-webkit-animation: submithover 2s;
+animation-iteration-count:infinite;
+-webkit-animation-iteration-count:infinite;
+}
+
+.form-edit-profile {
+  width: 75%;
+}
 
 /*------ SIDEBAR ------ */
 
@@ -388,6 +458,7 @@ a:hover{
 }
 
 #sidebar-cover {
+  overflow: hidden;
   height: 150px;
   width: 100%;
   background: url("../img/PP_large_2.png") no-repeat center;
@@ -402,7 +473,8 @@ a:hover{
 }
 
 #sidebar-content {
-margin-top: -80px;
+top: -80px;
+position: relative;
 }
 
 #sidebar-content #badges{
@@ -577,25 +649,25 @@ margin-top: -80px;
 
 /*------ FORMULAIRE POSTER CONTENU (Dashboard & iframe) ------ */
 #new-post{
-  padding: 25px 5px;
+  padding: 25px;
 }
-
-#new-post img{
-  margin: 0 25px;
-}
-#new-post img+div{
-  margin-left: 100px;
-}
-#new-post input, select{
-  border: solid #c7c8cc 1px;
-  border-radius: 2px;
-  color: #c7c8cc;
-  font-family: 'BentonSansMedium';
-  font-weight: normal;
-  font-size: 1em;
-  padding: 10px;
+#new-post input{
   margin-bottom: 10px;
+  margin-left: 5%;
   width: 95%;
+}
+#new-post input[type="submit"]{
+  width:20%;
+  }
+#new-post .post-hashtag input {
+  margin-left: 0;
+}
+.post-hashtag::before {
+  content:'#';
+  display: inline-block;
+  text-align: center;
+  width: 5%;
+  font-size: 1.3em;
 }
 .styled-select {
   width: 150px;
@@ -608,21 +680,6 @@ margin-top: -80px;
   width: 100%;
    background: transparent;
   -webkit-appearance: none;
-}
-#new-post input[type="submit"]{
-  width: 120px;
-  float: right;
-  color:#fff;
-  margin-right: 5%;
-  background-color: #fe6258;
-  border: none;
-}
-
-#new-post input[type="submit"]:hover{
-  animation: submithover 2s;
--webkit-animation: submithover 2s;
-animation-iteration-count:infinite;
--webkit-animation-iteration-count:infinite;
 }
 
 #new-post input[name="post_desc"]{
