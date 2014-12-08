@@ -1,29 +1,34 @@
-<div class="post-feed clearfix">
+<div class="results-wrapper col-10-12 clearfix">
 
   <% if @posts %>
 
-    <p><%= @posts.size() %> post<%= @posts.size() > 1 ? "s" : "" %> correspond<%= @posts.size() > 1 ? "ent" : "" %> à votre recherche</p>
+    <p class="results-info"><%= @posts.size() %> post<%= @posts.size() > 1 ? "s" : "" %> correspond<%= @posts.size() > 1 ? "ent" : "" %> à votre recherche</p>
 
     <% @posts.reverse_each do |post| %>
     <div class="post-feed clearfix">
-      <p><a href="#" class="name"><%= image_tag(post.user.picture.url(:thumb)) %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
-        <%= link_to post.content, post %> <%= link_to post.url, post.url %> #<%= link_to post.hashtag.name, post %> 
-      </p>
+      <div class="post-feed-inner clearfix">
+        <div class="post-feed-content col-1-12">
+          <a href="#" class="clearfix"><%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>
+        </div>
+        <div class="post-feed-content col-9-12">
+          <a href="#" class="name"><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
+          <%= link_to post.content, post, :class => "post-desc" %> <%= link_to post.url, post.url, :class => "post-url" %> <%= link_to '#'+post.hashtag.name, post, :class => "post-hash" %> <br>
+          <%= link_to "Permalien",  post, :class => "label label--permalink"  %>
+        </div>
+      </div>
     </div>
     <% end %>
   
   <% elsif @users %>
 
-    <p><%= @users.size() %> utilisateur<%= @users.size() > 1 ? "s" : "" %> correspond<%= @users.size() > 1 ? "ent" : "" %> à votre recherche</p>
+    <p class="results-info"><%= @users.size() %> utilisateur<%= @users.size() > 1 ? "s" : "" %> correspond<%= @users.size() > 1 ? "ent" : "" %> à votre recherche</p>
 
     <% @users.reverse_each do |user| %>
-    <div class="user clearfix">
-      <p>
-        <a href="#" class="name">
-          <%= image_tag(user.picture.url(:thumb)) %>
-          <%= user.username %>
-        </a>
-      </p>
+    <div class="user search-result-user clearfix">
+      <a href="#" class="name">
+        <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
+        <%= user.username %>
+      </a>
     </div>
     <% end %>
   <% else %>
