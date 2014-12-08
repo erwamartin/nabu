@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
       render :template => "landing/index", :layout => false
     else 
       @current_user = current_user
+      @target_user = current_user
+      get_followings_array_id
+      get_followers_array_id
     end
   end
 

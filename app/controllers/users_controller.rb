@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 
   def display_user
   	@current_user = User.find_by_username(params[:username])
-  	puts @current_user
+  	get_followings_array_id(@current_user)
+    get_followers_array_id(@current_user)
   end
 
   def follow
