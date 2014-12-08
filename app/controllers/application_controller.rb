@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def before_action
     if current_user.nil?
+      @user = User.new
       render :template => "landing/index", :layout => false
     else 
       @current_user = current_user
