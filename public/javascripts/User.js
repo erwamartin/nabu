@@ -77,17 +77,14 @@ var User = {
 				//response 0 <=> "I don't follow U"
 				//response 1 <=> "I follow U *sing*"  
 				if(response == "0"){
-					$(btn).html("Follow");
+					$(btn).html("follow");
 				}
 				else if(response == "1"){
-					$(btn).html("Unfollow");
+					$(btn).html("unfollow");
 					
 				}
 				
 			})
-			
-			
-		
 		
 		}
 			
@@ -104,7 +101,7 @@ $("#test").on("click","button", function(){
 
 	id = $(this).data("id");
 	state = $(this).data("state");
-	//console.log(id);
+	console.log(id);
 
 	User.follow(this, id, state);
 })

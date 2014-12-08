@@ -14,4 +14,9 @@ class PostsController < ApplicationController
 
   def create
   end
+
+  def get_suggest_posts
+    @posts = Post.where("user_id != ?", current_user.id).order("RAND()").limit(2)
+    (!@posts.empty?) ? (render partial: "suggestposts") : (render text: "no suggest")
+  end
 end
