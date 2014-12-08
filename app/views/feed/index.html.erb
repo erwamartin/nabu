@@ -1,6 +1,6 @@
       <div class="col-7-12"><!-- CENTRAL COLUMN -->
          <div class="content" id="new-post"><!-- NEW POST -->
-            <img src="img/PP_large_2.png" class="avatar-50" alt="">
+            <%= image_tag(current_user.picture.url(:thumb)) %><br>
             <div>
             <%= form_for :post, url: "/", :html => {name: 'post-article', id: 'post-article'} do |f| %>
               <p><%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu" %></p>
@@ -40,8 +40,11 @@
           </div>
          </div> <!-- END CONTENT SUGGESTIONS -->
       </div><!-- END RIGHT COLUMN -->
-    
+
+    <div id="test"></div>
+
 <script>
   // this is important for IEs
   var polyfilter_scriptpath = 'javascripts/';
 </script>
+

@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 
+  #Synchron babe
   resources :posts
-  # get 'posts/show/:id' => 'posts#show'
-  
-  root 'feed#index'
   post '/' => 'posts#create'
+  root 'feed#index'
+
+
+  # AJAX babe
+  get 'users/show' => 'users#show'
+  get 'users/followings' => 'users#get_followings'
+  get 'users/follow/:id' => 'users#follow' 
+  get 'users/unfollow/:id' => 'users#unfollow'
+
+
+  get 'users/suggestusers' => 'users#get_suggest_users'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
