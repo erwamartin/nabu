@@ -13,14 +13,12 @@
          </div><!-- END NEW POST -->
        <div class="content"><!-- FEED -->
           <section id="zone_post">
-          <% if current_user %>
             <% @posts.reverse_each do |post| %>
             <div class="post-feed clearfix">
-              <p><a href="#" class="name"><%= image_tag(current_user.picture.url(:thumb)) %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
+              <p><a href="#" class="name"><%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
                 <%= link_to post.content, post %> <%= link_to post.url, post.url %> #<%= link_to post.hashtag.name, post %> 
               </p>
             </div>
-          <% end %>
           <% end %>
           </section>
          </div><!-- END FEED -->

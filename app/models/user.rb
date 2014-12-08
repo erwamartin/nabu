@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   validates_attachment_presence :background
   validates_attachment_size :background, :less_than => 5.megabytes
-  validates_attachment_content_type :background, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_content_type :background, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   def create
     User.create(params[:user])

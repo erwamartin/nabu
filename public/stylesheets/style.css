@@ -379,7 +379,7 @@ h3 {
   bottom: -5px;
 }
 
-.label--delete a, a:visited {
+.label--delete a, .label--delete a:visited {
   color: white;
 }
 

@@ -17,7 +17,7 @@
   <% if alert %>
     <div class="alert alert-danger"><%= alert %></div>
   <% end %>
-<div id="wrapper" style="background: url('<%= current_user.picture.url(:sidebar) %>') repeat">  
+<div id="wrapper" style="background: url('<%= current_user.background %>') repeat">  
   <div id="left"><!-- LEFT PART -->
     <div id="sidebar"><!-- SIDEBAR -->
       <div id="sidebar-cover"><%= image_tag(current_user.picture.url(:sidebar), :class => "full res blur") %></div>
