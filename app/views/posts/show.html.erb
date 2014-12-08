@@ -1,12 +1,7 @@
 
-<div class="post-feed clearfix">
+<div class="post-feed single-view col-10-12">
   <p><a href="#" class="name"><img src="public/img/PP_large.png" class="avatar-50 avatar-feed" alt=""><%= @post.user.username %></a> - Il y a <%= time_ago_in_words(@post.created_at) %><br>
     <%= link_to @post.content, @post %> <%= link_to @post.url, @post.url %> #<%= link_to @post.hashtag.name, @post %> <br>
-    <small><%= link_to "Supprimer",  @post, :method => :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?' }  %></small>
+    <%= link_to "Supprimer",  @post, :method => :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?' }, :class => "label label--delete"  %>
   </p>
 </div>
-
-<script>
-  // this is important for IEs
-  var polyfilter_scriptpath = 'javascripts/';
-</script>

@@ -29,9 +29,9 @@ audio[controls], canvas, video { display: inline-block; *display: inline; *zoom:
  *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
 
-html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { min-height: 100vh; font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
-body { margin: 0; font-size: 14px; line-height: 1.231; }
+body { min-height: 100vh; margin: 0; font-size: 14px; line-height: 1.231; }
 
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
@@ -284,10 +284,15 @@ body {
 #wrapper{
   position: relative;
   width: 100%;
+  min-height: 100vh;
+}
+
+.bg-alpha {
+  background: rgba(239, 239, 239, 0.7);
 }
 
 a, a:visited{
-  color:#c7c8cc;
+  color:#3D3B38;
   text-decoration: none;
 }
 
@@ -358,6 +363,24 @@ h3 {
 
 .alert-error {
   background: #EAA093;
+}
+
+/*------- LABELS ------ */
+.label {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: .8rem;
+}
+
+.label--delete{
+  background: #fe6258;
+  position: absolute;
+  right: 20px;
+  bottom: -5px;
+}
+
+.label--delete a, a:visited {
+  color: white;
 }
 
 /*------ ICONS ET AVATARS ------ */
@@ -480,8 +503,8 @@ animation-iteration-count:infinite;
 -webkit-animation-iteration-count:infinite;
 }
 
-.form-edit-profile {
-  width: 75%;
+.tpl-edit-profile {
+  padding: 30px;
 }
 
 /*------ SIDEBAR ------ */
@@ -759,6 +782,11 @@ input[name="post_user_id"] {
 .post-feed {
   background-color: #ffffff;
   margin-bottom: 5px;
+}
+
+.post-feed.single-view {
+  margin-top: 40px;
+  position: relative;
 }
 
 .post-feed p {
