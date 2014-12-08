@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def get_followings
-  	followings_array_id = self.get_followings_array_id
+  	followings_array_id = get_followings_array_id
   	@users = User.where(id: followings_array_id)
 
   	(!@users.empty?) ? (render partial: "follow") : (render text: "no followings")
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def get_followers
-  	followers_array_id = self.get_followers_array_id
+  	followers_array_id = get_followers_array_id
   	@users = User.where(id: followers_array_id)
 
   	(!@users.empty?) ? (render partial: "follow") : (render text: "no followers")
@@ -42,36 +42,10 @@ class UsersController < ApplicationController
   def get_suggest_users
   	@users = User.where("id != ?", current_user.id).order("RAND()").limit(2)
   	
-  	(!@users.empty?) ? (render partial: "suggestusers") : (render text: "no suggest")
+  	#(!@users.empty?) ? (render partial: "suggestusers") : (render text: "no suggest")
   end
 
 
-# Tools methods :)
 
-  def get_followings_array_id
-    following_record = Relation.where(follower_id: current_user.id)
-    followings = []
-
-    following_record.each do |following|
-    	followings = followings + [following.following_id]
-    end
-
-    return followings
-
-  end
-
-  def get_followers_array_id
-    follower_record = Relation.where(following_id: current_user.id)
-    followers = []
-
-    follower_record.each do |follower|
-    	followers = followers + [follower.follower_id]
-    end
-
-    return followers
-
-  end
-
-# End tools
 
 end

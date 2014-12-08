@@ -1,6 +1,5 @@
       <div class="col-7-12"><!-- CENTRAL COLUMN -->
          <div class="content" id="new-post"><!-- NEW POST -->
-            <%= image_tag(current_user.picture.url(:thumb)) %><br>
             <div>
             <%= form_for :post, url: "/", :html => {name: 'post-article', id: 'post-article'} do |f| %>
               <p><%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu" %></p>
@@ -14,12 +13,14 @@
          </div><!-- END NEW POST -->
        <div class="content"><!-- FEED -->
           <section id="zone_post">
+          <% if current_user %>
             <% @posts.reverse_each do |post| %>
             <div class="post-feed clearfix">
-              <p><a href="#" class="name"><img src="public/img/PP_large.png" class="avatar-50 avatar-feed" alt=""><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
+              <p><a href="#" class="name"><%= image_tag(current_user.picture.url(:thumb)) %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
                 <%= link_to post.content, post %> <%= link_to post.url, post.url %> #<%= link_to post.hashtag.name, post %> 
               </p>
             </div>
+          <% end %>
           <% end %>
           </section>
          </div><!-- END FEED -->
@@ -30,18 +31,20 @@
           <h2>Suggestions</h2>
           <h3><img src="img/icons/users_suggestions.svg" class="icon-titles" alt="">Utilisateurs</h3>
           <a href="#" id="suggest_follows_button"><img src="img/icons/sync.svg" class="icon-sync" alt=""></a>
-          <div id="suggest_follow">
+          <div id="suggest_follow" class="follow-div">
+          <%= render partial: "suggestusers" %>
           </div>
           <h3><img src="img/articles.png" class="icon-titles" alt="">Articles</h3>
           <a href="#" id="suggest_articles_button"><img src="img/icons/sync.svg" class="icon-sync" alt=""></a>
           <div class="suggestion-article-wrapper">
             <div id="suggest_articles">
+            <%= render partial: "suggestposts" %>
             </div>
           </div>
          </div> <!-- END CONTENT SUGGESTIONS -->
       </div><!-- END RIGHT COLUMN -->
 
-    <div id="test"></div>
+
 
 <script>
   // this is important for IEs

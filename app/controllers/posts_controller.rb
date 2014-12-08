@@ -37,8 +37,5 @@ class PostsController < ApplicationController
     redirect_to root_path, :notice => "Votre post a bien été supprimé"
   end
 
-  def get_suggest_posts
-    @posts = Post.where("user_id != ?", current_user.id).order("RAND()").limit(2)
-    (!@posts.empty?) ? (render partial: "suggestposts") : (render text: "no suggest")
-  end
+  
 end

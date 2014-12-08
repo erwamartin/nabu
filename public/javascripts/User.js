@@ -93,11 +93,11 @@ var User = {
 
 
 User.init();
-User.getUsers();
+//User.getUsers();
 
 
 // #test is just before the footer !
-$("#test").on("click","button", function(){
+$(".follow-div").on("click","button", function(){
 
 	id = $(this).data("id");
 	state = $(this).data("state");
