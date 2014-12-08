@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   #Synchron babe
   resources :posts
-  post '/' => 'posts#create'
   root 'feed#index'
+  post '/' => 'posts#create'
 
 
   # AJAX babe

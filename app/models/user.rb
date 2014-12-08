@@ -6,16 +6,26 @@ class User < ActiveRecord::Base
   has_many :posts
 
   has_attached_file :picture, :styles => { :sidebar => "480x300>", :small => "300x300>", :thumb => "100x100#"  },
-  				  :default_url => "/images/:style/missing.png",
+  				  :default_url => "/assets/default/:style/default.jpg",
                   :url  => "/assets/pictures/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/pictures/:id/:style/:basename.:extension"
+
 
   validates_attachment_presence :picture
   validates_attachment_size :picture, :less_than => 5.megabytes
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
+  has_attached_file :background, :styles => { :thumb => "1000x1000#"  },
+                  :default_url => "/assets/default/:style/default.jpg",
+                  :url  => "/assets/pictures/:id/background/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/pictures/:id/background/:style/:basename.:extension"
+                  
+
+  validates_attachment_presence :background
+  validates_attachment_size :background, :less_than => 5.megabytes
+  validates_attachment_content_type :background, :content_type => ['image/jpeg', 'image/png']
+
   def create
-    puts "create_user_wesh"
     User.create(params[:user])
   end
 

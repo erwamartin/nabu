@@ -21,6 +21,11 @@
     </div>
 
     <div class="field">
+    <%= f.label :background, :class => "field-label" %><br />
+    <%= f.file_field :background, :class =>"form-field" %>
+  </div>
+
+    <div class="field">
       <%= f.label :email, :class => "field-label" %>
       <%= f.email_field :email, :class =>"form-field form-field--wlabel" %>
     </div>
