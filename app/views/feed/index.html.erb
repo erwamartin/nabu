@@ -2,25 +2,23 @@
          <div class="content" id="new-post"><!-- NEW POST -->
             <div>
             <%= form_for :post, url: "/", :html => {name: 'post-article', id: 'post-article'} do |f| %>
-              <p><%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu" %></p>
+              <%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu", :class => "form-field" %>
               <div id="form-extended">
-                <%= f.text_field :content, :id=>"desc", :placeholder=>"Message accompagnant le contenu" %></p>
-                <%= f.text_field :hashtag, :value=>"#" %>
-                <%= f.submit "Envoi" %>
+                <%= f.text_field :content, :id=>"desc", :placeholder=>"Message accompagnant le contenu", :class => "form-field" %>
+                <div class="post-hashtag"><%= f.text_field :hashtag, :class => "post-hashtag form-field" %></div>
+                <%= f.submit "Envoi", :class => "form-field" %>
               </div>
             <% end %>
            </div>
          </div><!-- END NEW POST -->
        <div class="content"><!-- FEED -->
           <section id="zone_post">
-          <% if current_user %>
             <% @posts.reverse_each do |post| %>
             <div class="post-feed clearfix">
-              <p><a href="#" class="name"><%= image_tag(current_user.picture.url(:thumb)) %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
+              <p><a href="#" class="name"><%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
                 <%= link_to post.content, post %> <%= link_to post.url, post.url %> #<%= link_to post.hashtag.name, post %> 
               </p>
             </div>
-            <% end %>
           <% end %>
           </section>
          </div><!-- END FEED -->

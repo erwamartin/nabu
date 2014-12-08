@@ -4,7 +4,6 @@
   <title>Nabu</title>
   <%= stylesheet_link_tag 'style' %>
   <%= stylesheet_link_tag 'simplegrid' %>
-  <%= stylesheet_link_tag 'app' %>
   <%= stylesheet_link_tag 'component' %>
   <%= javascript_include_tag 'custom.modernizr' %>
   <%= csrf_meta_tags %>
@@ -13,26 +12,26 @@
 <body>
 
   <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
+    <div class="alert alert-success"><%= notice %></div>
   <% end %>
   <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
+    <div class="alert alert-danger"><%= alert %></div>
   <% end %>
-<div id="wrapper">  
+<div id="wrapper" style="background: url('<%= current_user.background %>') repeat">  
   <div id="left"><!-- LEFT PART -->
     <div id="sidebar"><!-- SIDEBAR -->
-      <div id="sidebar-cover"></div>
+      <div id="sidebar-cover"><%= image_tag(current_user.picture.url(:sidebar), :class => "full res blur") %></div>
       <div id="sidebar-content">
          <div class="content">
-          <img src="<%= @current_user.picture %>" class="avatar-main" alt=""><br>
+          <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-main") %><br>
           <span class="user-name"><%= @current_user.username %></span>
           <div id="stats-followers"><span class="follow-number" id="nb_followers">0</span> followers</div>
           <div id="stats-following"><span class="follow-number" id="nb_following">0</span> following</div>
             <a class="profile-unfollow-button" href="user/follow/2/" id="follow_button">Suivre</a>
          </div>
          <div class="content list-follow followers">
-          <h3>Followers</h3>
-          <a href="#" class="close"><img src="public/img/icons/close.png" alt=""></a>
+          <h3 class="c-white">Followers</h3>
+          <a href="#" class="close"><img src="<%= root_path %>img/icons/close.png" alt=""></a>
           <ul>
             <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Marion"><a href="user/1">Marion</a></li>
             <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Valentin"><a href="user/3">Valentin</a></li>
@@ -41,8 +40,8 @@
           </ul>
          </div>
          <div class="content list-follow following">
-          <h3>Followings</h3>
-          <a href="#" class="close"><img src="public/img/icons/close.png" alt=""></a>
+          <h3 class="c-white">Followings</h3>
+          <a href="#" class="close"><img src="<%= root_path %>img/icons/close.png" alt=""></a>
           <ul>
             <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Francois"><a href="user/11">Francois</a></li>
             <li><img src="public/img/PP_large_2.png" class="avatar-30" alt="Loïc"><a href="user/5">Loïc</a></li>
@@ -57,16 +56,16 @@
   <div id="right"><!-- RIGHT PART -->
     <div class="grid grid-pad" id="top-content"><!-- GRID LOGO/SEARCH/MENU -->
       <div class="col-7-12" id="logo"><!-- LOGO AND SEARCHBAR -->
-          <h1><a href="/"><img src="img/logo_nabu.svg" alt="Nabu"></a></h1>
+          <h1><a href="/"><img src="<%= root_path %>img/logo_nabu.svg" alt="Nabu"></a></h1>
           <div id="search">
             <form action="/search" method="get">
               <input type="text" name="q" autocomplete="off" placeholder="Rechercher">
-              <div><img src="img/icons/loupe.svg"  class="icon-search" alt="Rechercher"></div>
+              <div><img src="<%= root_path %>img/icons/loupe.svg"  class="icon-search" alt="Rechercher"></div>
             </form>
           </div>
       </div><!-- END LOGO AND SEARCHBAR -->
       <div class="col-3-12" id="menu"><!-- MENU -->
-        <p><a href="user/"><img src="img/icons/user.svg" class="icon-menu" alt="Profil"></a> <a class="md-trigger" data-modal="modal-settings" ><img src="img/icons/settings.svg" class="icon-menu" alt="Paramètres"></a><a href="user/signout"><img src="img/icons/power.svg" class="icon-menu" alt="Déconnexion"></a></p>
+        <p><a href="user/"><img src="<%= root_path %>img/icons/user.svg" class="icon-menu" alt="Profil"></a> <a href="users/edit"><img src="<%= root_path %>img/icons/settings.svg" class="icon-menu" alt="Paramètres"></a><a href="user/signout"><img src="<%= root_path %>img/icons/power.svg" class="icon-menu" alt="Déconnexion"></a></p>
       </div><!-- END MENU -->
     </div><!-- END GRID LOGO/SEARCH/MENU -->
 
@@ -81,19 +80,9 @@
     <!--popup settings : html popup + scripts-->
 
 
-    <div class="md-modal md-effect-10" id="modal-settings">
-      <div class="md-content">
-        <h3>Modifiez vos infos</h3>
-        <div>
-          <button class="md-close">Close me!</button>
-        </div>
-      </div>
-    </div>
-
     <div class="md-overlay"></div><!-- the overlay element -->
 
     <%= javascript_include_tag 'cssParser' %>
-    <%= javascript_include_tag 'css-filters-polyfill' %>
     <%= javascript_include_tag 'classie' %>
     <%= javascript_include_tag 'modalEffects' %>
     <%= javascript_include_tag 'modernizr.custom' %>
@@ -102,7 +91,6 @@
     <%= javascript_include_tag 'User' %>
     <%= javascript_include_tag 'UserDashboard' %>
     <%= javascript_include_tag 'nabu' %>
-    <%= javascript_include_tag 'update' %>
 
 </body>
 </html>

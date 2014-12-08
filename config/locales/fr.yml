@@ -84,19 +84,19 @@ fr:
         one: 'un minute'
         other: '%{count} minutes'
       about_x_hours:
-        one: 'à peu près une heure'
+        one: 'environ une heure'
         other: '%{count} heures'
       x_days:
         one: 'un jour'
         other: '%{count} jours'
       about_x_months:
-        one: 'à peu près un mois'
+        one: 'environ un mois'
         other: '%{count} mois'
       x_months:
         one: 'un mois'
         other: '%{count} mois'
       about_x_years:
-        one: 'à peu près un an'
+        one: 'environ un an'
         other: '%{count} ans'
       over_x_years:
         one: "il y a plus d'un an"
