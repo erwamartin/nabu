@@ -3,11 +3,15 @@ class ApplicationController < ActionController::Base
 
   helper_method :resource, :resource_name, :devise_mapping
 
-  before_filter :set_data
-  layout :is_connected
+  before_action :before_action
+  layout "application"
 
-  def set_data
-    @current_user = current_user
+  def before_action
+    if current_user.nil?
+      render :template => "landing/index", :layout => false
+    else 
+      @current_user = current_user
+    end
   end
 
   def resource_name
@@ -21,14 +25,5 @@ class ApplicationController < ActionController::Base
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
-
-  private
-    def is_connected
-      if current_user.nil?
-        "landing"
-      else
-        "application"
-      end
-    end
 
 end
