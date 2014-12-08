@@ -66,3 +66,38 @@ fr:
         password: Mot de passe
         password_confirmation: Confirmation
         remember_me: Se souvenir de moi
+  datetime:
+    distance_in_words:
+      half_a_minute: "moins d'une minute"
+      less_than_x_seconds:
+        zero: "moins d'une seconde"
+        one: 'une seconde'
+        other: '%{count} secondes'
+      x_seconds:
+        one: 'une seconde'
+        other: '%{count} secondes'
+      less_than_x_minutes:
+        zero: "moins d'une minute"
+        one: 'une minute'
+        other: '%{count} minutes'
+      x_minutes:
+        one: 'un minute'
+        other: '%{count} minutes'
+      about_x_heures:
+        one: 'à peu près une heure'
+        other: '%{count} heures'
+      x_days:
+        one: 'un jour'
+        other: '%{count} jours'
+      about_x_months:
+        one: 'à peu près un mois'
+        other: '%{count} mois'
+      x_months:
+        one: 'un mois'
+        other: '%{count} mois'
+      about_x_years:
+        one: 'à peu près un an'
+        other: '%{count} ans'
+      over_x_years:
+        one: "il y a plus d'un an"
+        other: '%{count} ans'
