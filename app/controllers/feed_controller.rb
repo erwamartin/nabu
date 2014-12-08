@@ -1,6 +1,7 @@
 class FeedController < ApplicationController
 
   def index
+
     get_suggest_users
     get_suggest_posts
     get_followings_array_id
@@ -17,7 +18,7 @@ class FeedController < ApplicationController
   end
 
   def get_suggest_posts
-    @posts = Post.where("user_id != ?", current_user.id).order("RAND()").limit(2)
+    @posts = Post.where("user_id != ?", current_user.id).order("RAND()").limit(1)
     
   end
 

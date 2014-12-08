@@ -10,18 +10,23 @@ class UsersController < ApplicationController
   	(!@users.empty?) ? (render partial: "show") : (render text: "no users")
   end
 
+  def display_user
+  	@current_user = User.find_by_username(params[:username])
+  	puts @current_user
+  end
+
   def follow
     relation = Relation.new(follower_id: current_user.id, following_id: params[:id])
     relation.save
 
-    (relation.save) ? (render text: "1") : (render text: "0")
+    (relation.save) ? (render text: "1") : (render text: "no")
   end
 
   def unfollow
     relation = Relation.where("follower_id = ? AND following_id = ?", current_user.id, params[:id]).take
     relation.destroy
 
-    (relation.destroy) ? (render text: "0") : (render text: "1")
+    (relation.destroy) ? (render text: "0") : (render text: "no")
   end
 
   def get_followings

@@ -17,13 +17,13 @@
   <% if alert %>
     <div class="alert alert-danger"><%= alert %></div>
   <% end %>
-<div id="wrapper" style="background: url('<%= current_user.background %>') repeat">  
+<div id="wrapper" style="background: url('<%= @current_user.background %>') repeat">  
   <div id="left"><!-- LEFT PART -->
     <div id="sidebar"><!-- SIDEBAR -->
-      <div id="sidebar-cover"><%= image_tag(current_user.picture.url(:sidebar), :class => "full res blur") %></div>
+      <div id="sidebar-cover"><%= image_tag(@current_user.picture.url(:sidebar), :class => "full res blur") %></div>
       <div id="sidebar-content">
          <div class="content">
-          <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-main") %><br>
+          <%= image_tag(@current_user.picture.url(:thumb), :class => "avatar-main") %><br>
           <span class="user-name"><%= @current_user.username %></span>
           <div id="stats-followers"><span class="follow-number" id="nb_followers">0</span> followers</div>
           <div id="stats-following"><span class="follow-number" id="nb_following">0</span> following</div>
@@ -65,7 +65,7 @@
           </div>
       </div><!-- END LOGO AND SEARCHBAR -->
       <div class="col-3-12" id="menu"><!-- MENU -->
-        <p><a href="user/"><img src="<%= root_path %>img/icons/user.svg" class="icon-menu" alt="Profil"></a> <a href="users/edit"><img src="<%= root_path %>img/icons/settings.svg" class="icon-menu" alt="Paramètres"></a><a href="user/signout"><img src="<%= root_path %>img/icons/power.svg" class="icon-menu" alt="Déconnexion"></a></p>
+        <p><a href="user/"><img src="<%= root_path %>img/icons/user.svg" class="icon-menu" alt="Profil"></a> <a href="/users/edit"><img src="<%= root_path %>img/icons/settings.svg" class="icon-menu" alt="Paramètres"></a><a href="user/signout"><img src="<%= root_path %>img/icons/power.svg" class="icon-menu" alt="Déconnexion"></a></p>
       </div><!-- END MENU -->
     </div><!-- END GRID LOGO/SEARCH/MENU -->
 

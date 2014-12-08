@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
 
   # Tools methods :) [place à redéfinir]
 
-  def get_followings_array_id
-    following_record = Relation.where(follower_id: current_user.id)
+  def get_followings_array_id(user = current_user)
+    following_record = Relation.where(follower_id: user.id)
     followings = []
 
     following_record.each do |following|
@@ -41,8 +41,8 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def get_followers_array_id
-    follower_record = Relation.where(following_id: current_user.id)
+  def get_followers_array_id(user = current_user)
+    follower_record = Relation.where(following_id: user.id)
     followers = []
 
     follower_record.each do |follower|

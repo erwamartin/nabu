@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts
   root 'feed#index'
   post '/' => 'posts#create'
+  get 'users/:username' => 'users#display_user', as: 'profile'
 
 
   # AJAX babe
