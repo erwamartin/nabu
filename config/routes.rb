@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'feed#index'
   post '/' => 'posts#create'
 
+  get '/search' => 'search#search'
+
 
   # AJAX babe
   get 'users/show' => 'users#show'

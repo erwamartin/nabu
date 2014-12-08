@@ -1,0 +1,32 @@
+<div class="post-feed clearfix">
+
+  <% if @posts %>
+
+    <p><%= @posts.size() %> post<%= @posts.size() > 1 ? "s" : "" %> correspond<%= @posts.size() > 1 ? "ent" : "" %> à votre recherche</p>
+
+    <% @posts.reverse_each do |post| %>
+    <div class="post-feed clearfix">
+      <p><a href="#" class="name"><%= image_tag(post.user.picture.url(:thumb)) %><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
+        <%= link_to post.content, post %> <%= link_to post.url, post.url %> #<%= link_to post.hashtag.name, post %> 
+      </p>
+    </div>
+    <% end %>
+  
+  <% elsif @users %>
+
+    <p><%= @users.size() %> utilisateur<%= @users.size() > 1 ? "s" : "" %> correspond<%= @users.size() > 1 ? "ent" : "" %> à votre recherche</p>
+
+    <% @users.reverse_each do |user| %>
+    <div class="user clearfix">
+      <p>
+        <a href="#" class="name">
+          <%= image_tag(user.picture.url(:thumb)) %>
+          <%= user.username %>
+        </a>
+      </p>
+    </div>
+    <% end %>
+  <% else %>
+    <p>Aucun résultat</p>
+  <% end %>
+</div>
