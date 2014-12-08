@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include Devise::Controllers::Helpers
 
   def show
 
@@ -44,8 +45,5 @@ class UsersController < ApplicationController
   	
   	#(!@users.empty?) ? (render partial: "suggestusers") : (render text: "no suggest")
   end
-
-
-
 
 end
