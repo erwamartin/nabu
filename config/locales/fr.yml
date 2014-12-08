@@ -83,7 +83,7 @@ fr:
       x_minutes:
         one: 'un minute'
         other: '%{count} minutes'
-      about_x_heures:
+      about_x_hours:
         one: 'à peu près une heure'
         other: '%{count} heures'
       x_days:
