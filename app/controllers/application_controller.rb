@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
     else 
       @current_user = current_user
       @target_user = current_user
-      get_followings_array_id
-      get_followers_array_id
+      @followings = get_followings_array_id
+      @followers = get_followers_array_id
+      @follows_current_user = get_followings_array_id
     end
   end
 
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  # Tools methods :) [place à redéfinir]
+  # Tools methods :) 
 
   def get_followings_array_id(user = current_user)
     following_record = Relation.where(follower_id: user.id)
@@ -40,7 +41,7 @@ class ApplicationController < ActionController::Base
       followings = followings + [following.following_id]
     end
 
-    @followings = followings
+    return followings
 
   end
 
@@ -52,7 +53,7 @@ class ApplicationController < ActionController::Base
       followers = followers + [follower.follower_id]
     end
 
-    @followers = followers
+    return followers
 
   end
 

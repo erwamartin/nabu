@@ -17,17 +17,23 @@
   <% if alert %>
     <div class="alert alert-danger"><%= alert %></div>
   <% end %>
-<div id="wrapper" style="background: url('<%= @current_user.background %>') repeat">  
+<div id="wrapper" style="background: url('<%= @target_user.background %>') repeat">  
   <div id="left"><!-- LEFT PART -->
     <div id="sidebar"><!-- SIDEBAR -->
-      <div id="sidebar-cover"><%= image_tag(@current_user.picture.url(:sidebar), :class => "full res blur") %></div>
+      <div id="sidebar-cover"><%= image_tag(@target_user.picture.url(:sidebar), :class => "full res blur") %></div>
       <div id="sidebar-content">
          <div class="content">
-          <%= image_tag(@current_user.picture.url(:thumb), :class => "avatar-main") %><br>
-          <span class="user-name"><%= @current_user.username %></span>
+          <%= image_tag(@target_user.picture.url(:thumb), :class => "avatar-main") %><br>
+          <span class="user-name"><%= @target_user.username %></span>
           <div id="stats-followers"><span class="follow-number" id="nb_followers"><%= @followers.size %></span> followers</div>
           <div id="stats-following"><span class="follow-number" id="nb_following"><%= @followings.size %></span> following</div>
-            <a class="profile-unfollow-button" href="user/follow/2/" id="follow_button">Suivre</a>
+          <% if @target_user != @current_user %>
+            <div class="follow-container">
+              <a href="#" class="profile-unfollow-button" data-id="<%= @target_user.id %>" data-state="<% (@follows_current_user.include?(@target_user.id)) ? ( %>0<% ) :( %>1<% ) %>">
+                <% (@follows_current_user.include?(@target_user.id)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %>
+              </a>
+            </div>
+          <% end %>
          </div>
          <div class="content list-follow followers">
           <h3 class="c-white">Followers</h3>
@@ -58,10 +64,10 @@
       <div class="col-7-12" id="logo"><!-- LOGO AND SEARCHBAR -->
           <h1><a href="/"><img src="<%= root_path %>img/logo_nabu.svg" alt="Nabu"></a></h1>
           <div id="search">
-            <form action="users/search" method="post">
-            <input type="text" name="name" autocomplete="off" placeholder="Rechercher un ami"><div><img src="<%= root_path %>img/icons/loupe.svg"  class="icon-search" alt="Rechercher"></div>
+            <form action="/search" method="get">
+              <input type="text" name="q" autocomplete="off" placeholder="Rechercher">
+              <div><img src="<%= root_path %>img/icons/loupe.svg"  class="icon-search" alt="Rechercher"></div>
             </form>
-            <div id="search-results"><ul class="users-result"></ul></div>
           </div>
       </div><!-- END LOGO AND SEARCHBAR -->
       <div class="col-3-12" id="menu"><!-- MENU -->

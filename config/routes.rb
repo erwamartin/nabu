@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/' => 'posts#create'
   get 'users/:username' => 'users#display_user', as: 'profile'
 
+  get '/search' => 'search#search'
+
 
   # AJAX babe
   get 'users/show' => 'users#show'
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'users/suggestusers' => 'users#get_suggest_users'
 
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

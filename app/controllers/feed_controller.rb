@@ -1,7 +1,9 @@
 class FeedController < ApplicationController
 
-  def index
+  # to do :scope posts des followings
 
+  def index
+    
     get_suggest_users
     get_suggest_posts
    
@@ -17,6 +19,8 @@ class FeedController < ApplicationController
   end
 
   def get_suggest_posts
+    #Ajouter id_user != current_user.id ;)
+
     @posts_suggest = Post.order("RAND()").limit(2)
     
   end
