@@ -59,6 +59,20 @@ fr:
       not_saved:
         one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
         other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: "Le mot de passe et la confirmation ne sont pas identiques."
+              too_short: "Mot de passe trop court (caractères minimum: {{count}})."
+            password_confirmation:
+              blank: "Confirmation du mot de passe requise."
+              confirmation: "Les mots de passe ne sont pas identiques"
+            username:
+              taken: "Un utilisateur existe déjà avec ce nom d'utilisateur."
+              too_short: "Nom d'utilisateur trop court (8 caractères minimum)."
   helpers:
     label:
       user:

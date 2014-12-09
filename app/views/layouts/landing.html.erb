@@ -114,8 +114,7 @@
   </article>
   
   
-  <!-- POPUP -->
-  
+  <!-- POPUP -->  
     
     <div class="md-modal md-effect-10" id="modal-signin">
       <div class="md-content">
@@ -123,8 +122,12 @@
         <div>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            
+
             <%= devise_error_messages! %>
+
+            <% if @errors %>
+              <%= @errors.map { |msg| content_tag(:p, msg) }.join %>
+            <% end %>
 
             <div class="field">
               <%= f.label :email %><br />
@@ -164,6 +167,8 @@
         <div>
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <%= devise_error_messages! %>
 
             <div class="field">
               <%= f.label :email %><br />

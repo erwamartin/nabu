@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
 
   def get_layout
     if current_user.nil?
-      @user = User.new
       "landing"
     else 
       @current_user = current_user
