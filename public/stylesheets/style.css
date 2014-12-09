@@ -288,7 +288,7 @@ body {
 }
 
 .bg-alpha {
-  background: rgba(239, 239, 239, 0.8);
+  background: #fff;
 }
 
 a, a:visited{
@@ -362,7 +362,7 @@ h3 {
   background: #B7E4A1;
 }
 
-.alert-error {
+.alert-danger {
   background: #EAA093;
 }
 
@@ -466,11 +466,12 @@ form label {
 .form-field {
   border: solid #c7c8cc 1px;
   border-radius: 2px;
-  color: #c7c8cc;
+  color: rgb(142, 142, 142);
   font-family: 'BentonSansMedium';
   font-weight: normal;
   font-size: 1em;
   padding: 10px;
+  background: rgb(250, 250, 250);
 }
 
 .form-field--full {
@@ -527,7 +528,7 @@ animation-iteration-count:infinite;
 
 #sidebar-cover {
   overflow: hidden;
-  height: 150px;
+  height: 130px;
   width: 100%;
   background: url("../img/PP_large_2.png") no-repeat center;
   background-size: cover;
@@ -553,11 +554,20 @@ position: relative;
   margin-bottom: 0;
 }
 
-.user-name {
+a.user-name {
   font-family: 'BentonSansMedium';
   font-size: 1.571em;
   display: block;
   margin:20px 0 30px 0;
+  color:#fff;
+}
+
+.user-description{
+  font-family: 'bentonsansregular';
+  font-size: 1.125em;
+  display: block;
+  margin: 0 0 60px 0;
+  color:#cdcdcd;
 }
 
 #sidebar .content:nth-child(1) div {

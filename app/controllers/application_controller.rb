@@ -3,15 +3,19 @@ class ApplicationController < ActionController::Base
 
   helper_method :resource, :resource_name, :devise_mapping
 
-  before_action :before_action
+  before_filter :check_authentification
   layout "application"
 
-  def before_action
+  def check_authentification
     if current_user.nil?
       @user = User.new
       render :template => "landing/index", :layout => false
     else 
       @current_user = current_user
+      @target_user = current_user
+      @followings = get_followings_array_id
+      @followers = get_followers_array_id
+      @follows_current_user = get_followings_array_id
     end
   end
 
@@ -27,29 +31,29 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  # Tools methods :) [place à redéfinir]
+  # Tools methods :) 
 
-  def get_followings_array_id
-    following_record = Relation.where(follower_id: current_user.id)
+  def get_followings_array_id(user = current_user)
+    following_record = Relation.where(follower_id: user.id)
     followings = []
 
     following_record.each do |following|
       followings = followings + [following.following_id]
     end
 
-    @followings = followings
+    return followings
 
   end
 
-  def get_followers_array_id
-    follower_record = Relation.where(following_id: current_user.id)
+  def get_followers_array_id(user = current_user)
+    follower_record = Relation.where(following_id: user.id)
     followers = []
 
     follower_record.each do |follower|
       followers = followers + [follower.follower_id]
     end
 
-    @followers = followers
+    return followers
 
   end
 

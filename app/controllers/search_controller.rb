@@ -12,6 +12,9 @@ class SearchController < ApplicationController
       @posts = hashtag && hashtag.posts.length > 0 ? hashtag.posts : []
     else
       @posts = Post.where(["content LIKE ?", "%#{search}%"])
+      search = search[1, search.length-1] 
+      @posts = hashtag && hashtag.posts.length > 0 ? hashtag.posts : []
+      @users = User.where(["username LIKE ?", "%#{search}"])
     end
   end
   

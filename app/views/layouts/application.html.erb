@@ -11,23 +11,35 @@
 </head>
 <body>
 
+<div id="wrapper" style="background: url('<%= @target_user.background %>') repeat">  
   <% if notice %>
     <div class="alert alert-success"><%= notice %></div>
   <% end %>
   <% if alert %>
     <div class="alert alert-danger"><%= alert %></div>
   <% end %>
-<div id="wrapper" style="background: url('<%= current_user.background %>') repeat">  
+
   <div id="left"><!-- LEFT PART -->
     <div id="sidebar"><!-- SIDEBAR -->
-      <div id="sidebar-cover"><%= image_tag(current_user.picture.url(:sidebar), :class => "full res blur") %></div>
+      <div id="sidebar-cover">
+          <%= image_tag(@target_user.picture.url(:sidebar), :class => "full res blur") %>
+      </div>
       <div id="sidebar-content">
          <div class="content">
-          <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-main") %><br>
-          <span class="user-name"><%= @current_user.username %></span>
-          <div id="stats-followers"><span class="follow-number" id="nb_followers">0</span> followers</div>
-          <div id="stats-following"><span class="follow-number" id="nb_following">0</span> following</div>
-            <a class="profile-unfollow-button" href="user/follow/2/" id="follow_button">Suivre</a>
+          <%= image_tag(@target_user.picture.url(:thumb), :class => "avatar-main") %><br>
+          <a href="/users/<%= @target_user.username %>" class="user-name"><%= @target_user.username %></a>
+          <% if @target_user.description %>
+             <span class="user-description">" <%= @target_user.description %> "</span>
+          <% end %>
+          <div id="stats-followers"><span class="follow-number" id="nb_followers"><%= @followers.size %></span> followers</div>
+          <div id="stats-following"><span class="follow-number" id="nb_following"><%= @followings.size %></span> following</div>
+          <% if @target_user != @current_user %>
+            <div class="follow-container">
+              <a href="#" class="profile-unfollow-button" data-id="<%= @target_user.id %>" data-state="<% (@follows_current_user.include?(@target_user.id)) ? ( %>0<% ) :( %>1<% ) %>">
+                <% (@follows_current_user.include?(@target_user.id)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %>
+              </a>
+            </div>
+          <% end %>
          </div>
          <div class="content list-follow followers">
           <h3 class="c-white">Followers</h3>
@@ -65,7 +77,17 @@
           </div>
       </div><!-- END LOGO AND SEARCHBAR -->
       <div class="col-3-12" id="menu"><!-- MENU -->
-        <p><a href="user/"><img src="<%= root_path %>img/icons/user.svg" class="icon-menu" alt="Profil"></a> <a href="users/edit"><img src="<%= root_path %>img/icons/settings.svg" class="icon-menu" alt="Paramètres"></a><a href="user/signout"><img src="<%= root_path %>img/icons/power.svg" class="icon-menu" alt="Déconnexion"></a></p>
+        <p>
+          <a href="/users/<%= @target_user.username %>">
+            <img src="<%= root_path %>img/icons/user.svg" class="icon-menu" alt="Profil">
+          </a>
+          <a href="/users/edit">
+           <img src="<%= root_path %>img/icons/settings.svg" class="icon-menu" alt="Paramètres">
+          </a>
+          <a href="/users/sign_out">
+            <img src="<%= root_path %>img/icons/power.svg" class="icon-menu" alt="Déconnexion">
+          </a>
+        </p>
       </div><!-- END MENU -->
     </div><!-- END GRID LOGO/SEARCH/MENU -->
 
