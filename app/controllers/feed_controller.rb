@@ -3,23 +3,17 @@ class FeedController < ApplicationController
   # to do :scope posts des followings
 
   def index
-<<<<<<< HEAD
     if current_user
       get_suggest_users
       get_suggest_posts
       get_followings_array_id
       get_followers_array_id
 
+      get_suggest_users
+      get_suggest_posts
+
       @posts = Post.all
     end
-=======
-    
-    get_suggest_users
-    get_suggest_posts
-   
-
-    @posts = Post.all
->>>>>>> 71a1988c525c21443bfeeb36454bb6709833c69d
   end
 
 
