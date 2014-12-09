@@ -553,11 +553,20 @@ position: relative;
   margin-bottom: 0;
 }
 
-.user-name {
+a.user-name {
   font-family: 'BentonSansMedium';
   font-size: 1.571em;
   display: block;
   margin:20px 0 30px 0;
+  color:#fff;
+}
+
+.user-description{
+  font-family: 'bentonsansregular';
+  font-size: 1.125em;
+  display: block;
+  margin: 0 0 60px 0;
+  color:#cdcdcd;
 }
 
 #sidebar .content:nth-child(1) div {
