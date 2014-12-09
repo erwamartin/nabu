@@ -49,3 +49,4 @@ end
 gem 'database_cleaner', '~> 1.3.0'
 
 gem 'paperclip', '~> 4.1'
+gem 'pry'
