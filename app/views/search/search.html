@@ -44,7 +44,7 @@
 
     <% @users.reverse_each do |user| %>
     <div class="user search-result-user clearfix">
-      <a href="#" class="name">
+    <a href="/users/<%= user.username %>" class="name">
         <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
         <%= user.username %>
       </a>

@@ -20,11 +20,16 @@
 
   <div id="left"><!-- LEFT PART -->
     <div id="sidebar"><!-- SIDEBAR -->
-      <div id="sidebar-cover"><%= image_tag(@target_user.picture.url(:sidebar), :class => "full res blur") %></div>
+      <div id="sidebar-cover">
+          <%= image_tag(@target_user.picture.url(:sidebar), :class => "full res blur") %>
+      </div>
       <div id="sidebar-content">
          <div class="content">
           <%= image_tag(@target_user.picture.url(:thumb), :class => "avatar-main") %><br>
-          <span class="user-name"><%= @target_user.username %></span>
+          <a href="/users/<%= @target_user.username %>" class="user-name"><%= @target_user.username %></a>
+          <% if @target_user.description %>
+             <span class="user-description">" <%= @target_user.description %> "</span>
+          <% end %>
           <div id="stats-followers"><span class="follow-number" id="nb_followers"><%= @followers.size %></span> followers</div>
           <div id="stats-following"><span class="follow-number" id="nb_following"><%= @followings.size %></span> following</div>
           <% if @target_user != @current_user %>
@@ -72,7 +77,7 @@
       </div><!-- END LOGO AND SEARCHBAR -->
       <div class="col-3-12" id="menu"><!-- MENU -->
         <p>
-          <a href="/user/">
+          <a href="/users/<%= @target_user.username %>">
             <img src="<%= root_path %>img/icons/user.svg" class="icon-menu" alt="Profil">
           </a>
           <a href="/users/edit">
