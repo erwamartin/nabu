@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   	@target_user = User.find_by_username(params[:username])
   	@followings = get_followings_array_id(@target_user)
     @followers = get_followers_array_id(@target_user)
+    @posts = Post.where("user_id = ?", @target_user.id)
   end
 
   def get_followings(target_user)
