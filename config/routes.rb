@@ -8,13 +8,11 @@ Rails.application.routes.draw do
 
   get '/search' => 'search#search'
 
-
   # AJAX babe
   get 'users/show' => 'users#show'
   get 'users/followings' => 'users#get_followings'
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
-
 
   get 'users/suggestusers' => 'users#get_suggest_users'
 

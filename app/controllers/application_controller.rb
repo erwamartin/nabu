@@ -3,15 +3,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :resource, :resource_name, :devise_mapping
 
-  before_filter :check_authentification
-  layout "application"
+  #before_filter :check_authentification
+  layout :get_layout
 
-  def check_authentification
+  def get_layout
     if current_user.nil?
       @user = User.new
-      render :template => "landing/index", :layout => false
+      "landing"
     else 
       @current_user = current_user
+      "application"
     end
   end
 

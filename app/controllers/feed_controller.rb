@@ -1,12 +1,14 @@
 class FeedController < ApplicationController
 
   def index
-    get_suggest_users
-    get_suggest_posts
-    get_followings_array_id
-    get_followers_array_id
+    if current_user
+      get_suggest_users
+      get_suggest_posts
+      get_followings_array_id
+      get_followers_array_id
 
-    @posts = Post.all
+      @posts = Post.all
+    end
   end
 
 
