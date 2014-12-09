@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
 
   # AJAX babe
-  get 'users/show' => 'users#show'
-  get 'users/followings' => 'users#get_followings'
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
 

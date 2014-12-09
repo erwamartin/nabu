@@ -35,7 +35,7 @@
           <% if @target_user != @current_user %>
             <div class="follow-container">
               <a href="#" class="js-follow profile-unfollow-button" data-id="<%= @target_user.id %>" data-state="<% (@follows_current_user.include?(@target_user.id)) ? ( %>0<% ) :( %>1<% ) %>">
-                <% (@follows_current_user.include?(@target_user.id)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %>
+                <% (@follows_current_user.include?(@target_user)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %>
               </a>
             </div>
           <% end %>
