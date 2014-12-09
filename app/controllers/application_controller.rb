@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :resource, :resource_name, :devise_mapping
-
-  #before_filter :check_authentification
   layout :get_layout
 
   def get_layout
