@@ -1,5 +1,5 @@
 <div class="results-wrapper col-10-12 clearfix">
-
+<% if @posts || @users %>
   <% if @posts %>
 
     <p class="results-info"><%= @posts.size() %> post<%= @posts.size() > 1 ? "s" : "" %> correspond<%= @posts.size() > 1 ? "ent" : "" %> à votre recherche</p>
@@ -18,19 +18,20 @@
       </div>
     </div>
     <% end %>
-  
-  <% elsif @users %>
+  <% end %>
+  <% if @users %>
 
     <p class="results-info"><%= @users.size() %> utilisateur<%= @users.size() > 1 ? "s" : "" %> correspond<%= @users.size() > 1 ? "ent" : "" %> à votre recherche</p>
 
     <% @users.reverse_each do |user| %>
     <div class="user search-result-user clearfix">
       <a href="#" class="name">
-        <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
+        <%= image_tag(user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
         <%= user.username %>
       </a>
     </div>
-    <% end %>
+  <% end %>
+<% end %>
   <% else %>
     <p>Aucun résultat</p>
   <% end %>

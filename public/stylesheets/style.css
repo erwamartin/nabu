@@ -323,6 +323,7 @@ a:hover{
 }
 
 .centered {
+  display: block;
   margin: 0 auto;
 }
 
@@ -361,7 +362,7 @@ h3 {
   background: #B7E4A1;
 }
 
-.alert-error {
+.alert-danger {
   background: #EAA093;
 }
 
@@ -450,7 +451,7 @@ h3 {
 
 /*------ IMG --------*/
 img.blur { -webkit-filter: blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter: blur(3px); filter: blur(3px); }
-img.full { width: 100%; }
+.full { width: 100%; }
 img.res  { max-width: 100%; }
 
 /*------ FORM -------*/
@@ -527,7 +528,7 @@ animation-iteration-count:infinite;
 
 #sidebar-cover {
   overflow: hidden;
-  height: 150px;
+  height: 130px;
   width: 100%;
   background: url("../img/PP_large_2.png") no-repeat center;
   background-size: cover;
@@ -553,16 +554,30 @@ position: relative;
   margin-bottom: 0;
 }
 
-.user-name {
+a.user-name {
   font-family: 'BentonSansMedium';
   font-size: 1.571em;
   display: block;
   margin:20px 0 30px 0;
+  color:#fff;
 }
 
-#sidebar .content:nth-child(1) div {
+.user-description{
+  font-family: 'bentonsansregular';
+  font-size: 1.125em;
+  display: block;
+  margin: 0 0 30px 0;
+  color:#cdcdcd;
+}
+
+.posts-number {
+  margin: 0 0 30px 0;
+}
+
+.follow-numbers-container {
   display: inline-block;
   width:45%;
+  cursor: pointer;
 }
 #sidebar .content:nth-child(1){
   margin-bottom: 20px;
@@ -824,6 +839,10 @@ input[name="post_user_id"] {
   display: inline-block;
 }
 
+.post-picture {
+  margin-top: 30px;
+}
+
 .name, .name:visited {
   color: #1c2227;
   font-family: 'BentonSansMedium';
@@ -877,10 +896,9 @@ input[name="post_user_id"] {
 }
 
 .col-3-12 h3,  .col-4-12 h3 {
-  float: left;
   clear: both;
-  margin:30px 20px 10px 20px;
-  font-size: 1em;
+padding: 30px 20px 10px 20px;
+font-size: 1em;
 }
 .col-3-12 h3 img,  .col-4-12 h3 img{
   margin-right: 10px;
@@ -894,18 +912,6 @@ input[name="post_user_id"] {
 
 .col-3-12 .avatar-45{
   margin-right: 20px
-}
-.follow-button, .follow-button:visited{
-  color: #fff;
-  display: inline-block;
-  text-align: center;
-  background-color: #fe6258;
-  padding: 2px 10px 1px 10px;
-  text-transform: uppercase;
-  position: absolute;
-  right: 20px;
-  bottom: 0;
-  font-size: 0.857em;
 }
 
 .col-3-12 .content:nth-child(2){
@@ -941,7 +947,7 @@ input[name="post_user_id"] {
 }
 
 .suggestion-article-wrapper{
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     color: #45555f;
 }
 
@@ -962,6 +968,18 @@ input[name="post_user_id"] {
 
 .suggestion-article .post-link{
   font-size: 0.857em;
+}
+
+.suggest-article ul {
+  padding: 0;
+}
+.suggest-article ul li {
+  margin-bottom: 10px;
+}
+.suggest-article ul li::before{
+  content: "•";
+  color: #ff7461;
+  padding-right: 10px;
 }
 
 
@@ -1026,7 +1044,7 @@ input[name="post_user_id"] {
 }
 
 /*------ BOUTONS (UN)FOLLOW (profil) ------ */
-.profile-follow-button,.profile-unfollow-button {
+.profile-follow-button, .profile-unfollow-button {
   width: 150px;
   padding: 10px 0;
   text-align: center;
@@ -1041,22 +1059,49 @@ input[name="post_user_id"] {
   border: 1px solid #ff7461;
 }
 
+.profile-follow-button--small, .profile-unfollow-button--small {
+  padding: 4px 10px;
+  text-align: center;
+  display: inline-block;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  margin: 5px ;
+  color: #fff;
+  text-transform: uppercase;
+    transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  border: 1px solid #ff7461;
+}
 
-.profile-follow-button:hover {
+
+.profile-follow-button:hover, .profile-follow-button--small:hover {
   background: #ff7461;
   text-decoration: none;
 }
 
-.profile-unfollow-button {
+.profile-unfollow-button, .profile-unfollow-button--small {
   background-color: #ff7461;
 }
 
-.profile-unfollow-button:hover {
+.profile-unfollow-button:hover, .profile-unfollow-button--small:hover {
   border: 1px solid #ff7461;
   background-color: transparent;
   text-decoration: none;
 }
 
+/*----  suggestions ----*/
+.follow-container {
+  margin-bottom: 20px;
+}
+
+.title-rel {
+  position: relative;
+}
+
+.title-button {
+  position: absolute;
+  right: 10px;
+}
 
 /* =============================================================================
    Non-semantic helper classes

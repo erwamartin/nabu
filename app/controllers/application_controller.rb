@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
       "landing"
     else 
       @current_user = current_user
+      @target_user = current_user
+      @followings = current_user.following
+      @followers = current_user.followers
+      @follows_current_user = current_user.following
       "application"
     end
   end
@@ -25,32 +29,5 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  # Tools methods :) [place à redéfinir]
-
-  def get_followings_array_id
-    following_record = Relation.where(follower_id: current_user.id)
-    followings = []
-
-    following_record.each do |following|
-      followings = followings + [following.following_id]
-    end
-
-    @followings = followings
-
-  end
-
-  def get_followers_array_id
-    follower_record = Relation.where(following_id: current_user.id)
-    followers = []
-
-    follower_record.each do |follower|
-      followers = followers + [follower.follower_id]
-    end
-
-    @followers = followers
-
-  end
-
-# End tools
-
+  
 end

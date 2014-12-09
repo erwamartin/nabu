@@ -1,8 +1,0 @@
-<h1>Create a new post!</h1>
-
-<%= form_for :post, url: "/posts" do |f| %>
-  <p>URL : <%= f.text_field :url %></p>
-  <p>Decription : <%= f.text_field :content %></p>
-  <p>#<%= f.text_field :hashtag %></p>
-  <%= f.submit "Envoi" %>
-<% end %>

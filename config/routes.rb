@@ -5,16 +5,18 @@ Rails.application.routes.draw do
   resources :posts
   root 'feed#index'
   post '/' => 'posts#create'
+  get 'users/:username' => 'users#display_user', as: 'profile'
 
   get '/search' => 'search#search'
 
   # AJAX babe
-  get 'users/show' => 'users#show'
-  get 'users/followings' => 'users#get_followings'
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
 
   get 'users/suggestusers' => 'users#get_suggest_users'
+
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
