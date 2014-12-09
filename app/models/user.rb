@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
                   :path => ":rails_root/public/assets/pictures/:id/:style/:basename.:extension"
 
 
-  validates_attachment_presence :picture
   validates_attachment_size :picture, :less_than => 5.megabytes
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
@@ -21,7 +20,6 @@ class User < ActiveRecord::Base
                   :path => ":rails_root/public/assets/pictures/:id/background/:style/:basename.:extension"
                   
 
-  validates_attachment_presence :background
   validates_attachment_size :background, :less_than => 5.megabytes
   validates_attachment_content_type :background, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 

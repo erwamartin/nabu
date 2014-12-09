@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :resource, :resource_name, :devise_mapping
 
-  before_action :before_action
+  before_filter :check_authentification
   layout "application"
 
-  def before_action
+  def check_authentification
     if current_user.nil?
       @user = User.new
       render :template => "landing/index", :layout => false
