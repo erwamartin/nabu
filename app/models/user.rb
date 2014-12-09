@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   validates :username,  presence: true, uniqueness: true
   has_many :posts
+  has_many :active_relationships,  class_name:  "Relation",
+                                   foreign_key: "follower_id",
+                                   dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relation",
+                                   foreign_key: "following_id",
+                                   dependent:   :destroy
+  has_many :following, through: :active_relationships,  source: :following
+  has_many :followers, through: :passive_relationships, source: :follower
 
   has_attached_file :picture, :styles => { :sidebar => "480x300>", :small => "300x300>", :thumb => "100x100#"  },
   				  :default_url => "/assets/default/:style/default.jpg",

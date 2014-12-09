@@ -1,13 +1,17 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
+  before_filter :get_info_user, only: [:update, :edit]
 
   skip_before_filter :check_authentification
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+      @target_user = current_user
+      @followings = 0
+      @followers = 0
+   super
+ end
 
   # POST /resource
   # def create
@@ -15,12 +19,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   #GET /resource/edit
-  def edit
-      @target_user = current_user
-      @followings = get_followings_array_id
-      @followers = get_followers_array_id
-   super
-  end
+  #def edit
+   #super
+  #end
 
   # PUT /resource
   # def update
@@ -40,32 +41,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  def get_followings_array_id(user = current_user)
-    following_record = Relation.where(follower_id: user.id)
-    followings = []
-
-    following_record.each do |following|
-      followings = followings + [following.following_id]
-    end
-
-    return followings
-
-  end
-
-  def get_followers_array_id(user = current_user)
-    follower_record = Relation.where(following_id: user.id)
-    followers = []
-
-    follower_record.each do |follower|
-      followers = followers + [follower.follower_id]
-    end
-
-    return followers
-
-  end
-
   protected
+
+  def get_info_user
+      @target_user = current_user
+      @followings = current_user.following
+      @followers = current_user.followers
+  end
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params

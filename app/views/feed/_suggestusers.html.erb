@@ -2,7 +2,7 @@
 <% @users.each do |user| %>
     <li class="follow-container clearfix">
     	<%= link_to image_tag(user.picture.url(:thumb), :class => "avatar-30"), profile_path(user.username) %> <%= link_to user.username, profile_path(user.username) %><br>
-    	<a href="#" class="js-follow profile-unfollow-button--small" data-id="<%= user.id %>" data-state=<% (@follows_current_user.include?(user.id)) ? ( %>"0"<% ) :( %>"1"<% ) %>><% (@follows_current_user.include?(user.id)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %></a>
+    	<a href="#" class="js-follow profile-unfollow-button--small" data-id="<%= user.id %>" data-state=<% (@follows_current_user.include?(user)) ? ( %>"0"<% ) :( %>"1"<% ) %>><% (@follows_current_user.include?(user)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %></a>
     </li>
 <% end %>
 </ul>

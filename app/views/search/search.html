@@ -1,27 +1,8 @@
 <div class="results-wrapper col-10-12 clearfix">
-<% if @posts || @hashtags || @users %>
+<% if @posts || @users %>
   <% if @posts %>
 
     <p class="results-info"><%= @posts.size() %> post<%= @posts.size() > 1 ? "s" : "" %> correspond<%= @posts.size() > 1 ? "ent" : "" %> à votre recherche</p>
-
-    <% @posts.reverse_each do |post| %>
-    <div class="post-feed clearfix">
-      <div class="post-feed-inner clearfix">
-        <div class="post-feed-content col-1-12">
-          <a href="#" class="clearfix"><%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>
-        </div>
-        <div class="post-feed-content col-9-12">
-          <a href="#" class="name"><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
-          <%= link_to post.content, post, :class => "post-desc" %> <%= link_to post.url, post.url, :class => "post-url" %> <a href="<%= root_path %>search?q=%23<%= post.hashtag.name %>" class="post-hash">#<%= post.hashtag.name %></a> <br>
-          <%= link_to "Permalien",  post, :class => "label label--permalink"  %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  <% end %>
-  <% if @hashtags %>
-
-    <p class="results-info"><%= @posts.size() %> hashtag<%= @posts.size() > 1 ? "s" : "" %> correspond<%= @posts.size() > 1 ? "ent" : "" %> à votre recherche</p>
 
     <% @posts.reverse_each do |post| %>
     <div class="post-feed clearfix">
@@ -44,8 +25,8 @@
 
     <% @users.reverse_each do |user| %>
     <div class="user search-result-user clearfix">
-    <a href="/users/<%= user.username %>" class="name">
-        <%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
+      <a href="#" class="name">
+        <%= image_tag(user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
         <%= user.username %>
       </a>
     </div>
