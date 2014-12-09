@@ -27,17 +27,17 @@
          <div class="content">
           <%= image_tag(@target_user.picture.url(:thumb), :class => "avatar-main") %><br>
           <a href="/users/<%= @target_user.username %>" class="user-name"><%= @target_user.username %></a>
-          <% if @target_user.description %>
+          <% if @target_user.description.size > 1 %>
              <span class="user-description">" <%= @target_user.description %> "</span>
           <% end %>
           <div class="posts-number">
-            <span class="follow-number"><%= @posts.size %></span> posts
+            <span class="follow-number"><%= @nb_posts %></span> posts
           </div>
           <div id="stats-followers" class="follow-numbers-container"><span class="follow-number" id="nb_followers"><%= @followers.size %></span> followers</div>
           <div id="stats-following" class="follow-numbers-container"><span class="follow-number" id="nb_following"><%= @followings.size %></span> following</div>
           <% if @target_user != @current_user %>
             <div class="follow-container">
-              <a href="#" class="js-follow profile-unfollow-button" data-id="<%= @target_user.id %>" data-state="<% (@follows_current_user.include?(@target_user.id)) ? ( %>0<% ) :( %>1<% ) %>">
+              <a href="#" class="js-follow profile-unfollow-button" data-id="<%= @target_user.id %>" data-state="<% (@follows_current_user.include?(@target_user)) ? ( %>0<% ) :( %>1<% ) %>">
                 <% (@follows_current_user.include?(@target_user)) ? ( %>Ne plus suivre<% ) :( %>Suivre<% ) %>
               </a>
             </div>

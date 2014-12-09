@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       @followings = current_user.following
       @followers = current_user.followers
       @follows_current_user = current_user.following
-      @posts = current_user.posts
+      @nb_posts = current_user.posts.count
     end
   end
 

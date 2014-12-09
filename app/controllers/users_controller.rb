@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   	@target_user = User.find_by_username(params[:username])
   	@followings = @target_user.following
     @followers = @target_user.followers
+    @nb_posts = @target_user.posts.count
+    @posts = @target_user.posts
   end
 
   def get_followings(target_user = current_user)
