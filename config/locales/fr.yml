@@ -81,7 +81,7 @@ fr:
         one: 'une minute'
         other: '%{count} minutes'
       x_minutes:
-        one: 'un minute'
+        one: 'une minute'
         other: '%{count} minutes'
       about_x_hours:
         one: 'environ une heure'

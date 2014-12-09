@@ -323,6 +323,7 @@ a:hover{
 }
 
 .centered {
+  display: block;
   margin: 0 auto;
 }
 
@@ -821,6 +822,10 @@ input[name="post_user_id"] {
 
 .post-feed-content {
   display: inline-block;
+}
+
+.post-picture {
+  margin-top: 30px;
 }
 
 .name, .name:visited {
