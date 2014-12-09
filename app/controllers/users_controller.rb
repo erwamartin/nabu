@@ -7,17 +7,16 @@ class UsersController < ApplicationController
   	@target_user = User.find_by_username(params[:username])
   	@followings = @target_user.following
     @followers = @target_user.followers
-    @posts = Post.where("user_id = ?", @target_user.id)
   end
 
   def get_followings(target_user = current_user)
-    @users = current_user.following
+    @users = target_user.following
     (!@users.empty?) ? (render partial: "feed/suggestusers") : (render text: "no followings")
     
   end
 
   def get_followers(target_user = current_user)
-    @users = current_user.follower
+    @users = target_user.follower
     (!@users.empty?) ? (render partial: "feed/suggestusers") : (render text: "no followings")
     
   end
