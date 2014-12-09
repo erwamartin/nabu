@@ -1,5 +1,5 @@
 <ul>
 <% @posts_suggest.each do |post| %>
-    <li><%= post.url %></li>
+    <li><%= link_to post.url, post %></li>
 <% end %>
 </ul>

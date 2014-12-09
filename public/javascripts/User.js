@@ -106,7 +106,7 @@ User.init();
 
 
 // #test is just before the footer !
-$(".follow-container").on("click","a", function(e){
+$(".follow-container").on("click","a.js-follow", function(e){
 	e.preventDefault();
 	id = $(this).data("id");
 	state = $(this).data("state");
