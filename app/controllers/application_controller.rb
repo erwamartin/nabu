@@ -14,11 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_data
-    @current_user = current_user
-    @target_user = current_user
-    @followings = current_user.following
-    @followers = current_user.followers
-    @follows_current_user = current_user.following
+    if ! current_user.nil?
+      @current_user = current_user
+      @target_user = current_user
+      @followings = current_user.following
+      @followers = current_user.followers
+      @follows_current_user = current_user.following
+    end
   end
 
   def resource_name
