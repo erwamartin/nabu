@@ -43,6 +43,15 @@ class PostsController < ApplicationController
     redirect_to root_path, :notice => "Votre post a bien été supprimé"
   end
 
+  def add_bookmark
+    bookmark = current_user.bookmarks.create(post_id: params[:id])
+    (bookmark.save) ? (render text: "1") : (render text: "no")
+  end
+
+  def remove_bookmark
+    relation = current_user.bookmarks.find_by(post_id: params[:id]).destroy
+    (bookmark.destroy) ? (render text: "0") : (render text: "no")
+  end
 
  private 
     def link_thumb_exceptions

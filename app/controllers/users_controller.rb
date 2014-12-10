@@ -42,7 +42,6 @@ class UsersController < ApplicationController
     (relation.destroy) ? (render text: "0") : (render text: "no")
   end
 
-
 #end
 
 end

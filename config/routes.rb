@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
 
+  get 'posts/add_bookmark/:id' => 'posts#add_bookmark' 
+  get 'posts/remove_bookmark/:id' => 'posts#remove_bookmark'
+
   get 'users/suggestusers' => 'users#get_suggest_users'
 
 
