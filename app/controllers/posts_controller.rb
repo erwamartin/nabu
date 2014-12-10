@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   end
 
   def remove_bookmark
-    relation = current_user.bookmarks.find_by(post_id: params[:id]).destroy
+    bookmark = current_user.bookmarks.find_by(post_id: params[:id]).destroy
     (bookmark.destroy) ? (render text: "0") : (render text: "no")
   end
 
