@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  rescue_from LinkThumbnailer::Exceptions, with: :link_thumb_exceptions
+  rescue_from StandardError::ArgumentError, with: :link_thumb_exceptions
+
 
   # def index
   #   @posts = Post.all
@@ -6,7 +9,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+      @apercu = LinkThumbnailer.generate(@post.url) 
+      @apercu_ok = true
   end
+
 
   def new
     @post = Post.new
@@ -36,6 +42,12 @@ class PostsController < ApplicationController
 
     redirect_to root_path, :notice => "Votre post a bien été supprimé"
   end
+
+
+ private 
+    def link_thumb_exceptions
+      @apercu_ok = false
+    end 
 
   
 end
