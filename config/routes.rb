@@ -9,11 +9,9 @@ Rails.application.routes.draw do
 
   get '/search' => 'search#search'
 
-
   # AJAX babe
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
-
 
   get 'users/suggestusers' => 'users#get_suggest_users'
 

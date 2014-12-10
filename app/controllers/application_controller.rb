@@ -2,15 +2,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :resource, :resource_name, :devise_mapping
+  before_filter :set_data
+  layout :get_layout
 
-  before_filter :check_authentification
-  layout "application"
-
-  def check_authentification
+  def get_layout
     if current_user.nil?
-      @user = User.new
-      render :template => "landing/index", :layout => false
+      "landing"
     else 
+      "application"
+    end
+  end
+
+  def set_data
+    if ! current_user.nil?
       @current_user = current_user
       @target_user = current_user
       @followings = current_user.following
@@ -30,6 +34,32 @@ class ApplicationController < ActionController::Base
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  # Tools methods
+
+  def get_followings_array_id
+    following_record = Relation.where(follower_id: current_user.id)
+    followings = []
+
+    following_record.each do |following|
+      followings = followings + [following.following_id]
+    end
+
+    @followings = followings
+
+  end
+
+  def get_followers_array_id
+    follower_record = Relation.where(following_id: current_user.id)
+    followers = []
+
+    follower_record.each do |follower|
+      followers = followers + [follower.follower_id]
+    end
+
+    @followers = followers
+
   end
 
   
