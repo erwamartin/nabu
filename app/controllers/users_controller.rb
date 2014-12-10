@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
 
 # Sync method
+  def bookmarks
+    @target_user = User.find_by_username(params[:username])
+    @posts = @target_user.bookmarks_posts
+  end
+
   def display_user
   	@target_user = User.find_by_username(params[:username])
   	@followings = @target_user.following

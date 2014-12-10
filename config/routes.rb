@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'feed#index'
   post '/' => 'posts#create'
   get 'users/:username' => 'users#display_user', as: 'profile'
+  get 'users/:username/bookmarks' => 'users#bookmarks#', as: 'bookmarks'
 
   get '/search' => 'search#search'
 

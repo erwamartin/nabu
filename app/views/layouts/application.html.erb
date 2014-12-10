@@ -33,6 +33,11 @@
           <div class="posts-number">
             <span class="follow-number"><%= @nb_posts %></span> posts
           </div>
+          <div class="bookmarks-number">
+            <a href="/users/<%= @target_user.username %>/bookmarks">
+              <span class="follow-number"><%= @nb_bookmarks %></span> bookmarks
+            </a>
+          </div>
           <div id="stats-followers" class="follow-numbers-container"><span class="follow-number" id="nb_followers"><%= @followers.size %></span> followers</div>
           <div id="stats-following" class="follow-numbers-container"><span class="follow-number" id="nb_following"><%= @followings.size %></span> following</div>
           <% if @target_user != @current_user %>
