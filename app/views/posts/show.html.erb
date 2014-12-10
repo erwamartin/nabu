@@ -2,7 +2,7 @@
 <div class="post-feed single-view col-10-12">
   <div class="post-feed-inner clearfix">
   	<div class="post-feed-content col-1-12">
-  		<a href="/users/<%= @target_user.username %>" class="clearfix"><%= image_tag(current_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>
+  		<a href="/users/<%= @post.user.username %>" class="clearfix"><%= image_tag(@post.user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>
   	</div>
   	<div class="post-feed-content col-9-12">
   		<a href="/users/<%= @target_user.username %>" class="name"><%= @post.user.username %></a> - Il y a <%= time_ago_in_words(@post.created_at) %><br>

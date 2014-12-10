@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def get_followers(target_user = current_user)
     @users = target_user.follower
-    (!@users.empty?) ? (render partial: "partial/follow") : (render text: "no followings")
+    (!@users.empty?) ? (render partial: "partial/follow") : (render text: "no followers")
     
   end
 
