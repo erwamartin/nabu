@@ -13,18 +13,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_data
-    if ! current_user.nil?
-      @current_user = current_user
-      @target_user = current_user
-      @followings = current_user.following
-      @followers = current_user.followers
-      @follows_current_user = current_user.following
-      @nb_posts = current_user.posts.count
-      @nb_bookmarks = current_user.bookmarks_posts.count
-    end
-  end
-
   def resource_name
     :user
   end
@@ -62,6 +50,19 @@ class ApplicationController < ActionController::Base
     @followers = followers
 
   end
+
+  private
+    def set_data
+      if ! current_user.nil?
+        @current_user = current_user
+        @target_user = current_user
+        @followings = current_user.following
+        @followers = current_user.followers
+        @follows_current_user = current_user.following
+        @nb_posts = current_user.posts.count
+        @nb_bookmarks = current_user.bookmarks_posts.count
+      end
+    end
 
   
 end

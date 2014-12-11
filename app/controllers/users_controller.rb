@@ -1,19 +1,18 @@
 class UsersController < ApplicationController
   include Devise::Controllers::Helpers
 
+  before_filter :set_data_user
+
 
 # Sync method
+
   def bookmarks
-    @target_user = User.find_by_username(params[:username])
     @posts = @target_user.bookmarks_posts
   end
 
   def display_user
-  	@target_user = User.find_by_username(params[:username])
   	@followings = @target_user.following
     @followers = @target_user.followers
-    @nb_posts = @target_user.posts.count
-    @nb_bookmarks = @target_user.bookmarks_posts.count
     @posts = @target_user.posts.reverse_order
   end
 
@@ -49,5 +48,12 @@ class UsersController < ApplicationController
   end
 
 #end
+
+  private
+    def set_data_user
+      @target_user = User.find_by_username(params[:username])
+      @nb_posts = @target_user.posts.count
+      @nb_bookmarks = @target_user.bookmarks_posts.count
+    end
 
 end
