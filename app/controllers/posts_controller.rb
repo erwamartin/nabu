@@ -23,13 +23,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    if Hashtag.exists?(:name => params[:post][:hashtag])
-      hashtag = Hashtag.where("name = ?", params[:post][:hashtag])
-      htag_id = hashtag.first.id
-    else
-      hashtag = Hashtag.create(name: params[:post][:hashtag])
-      htag_id = hashtag.id
-    end
+    htag_id = Hashtag.get_id_hashtag_if_exist_or_not(params[:post][:hashtag])
 
     @post = Post.create(user_id: current_user.id, url: params[:post][:url], hashtag_id: htag_id, content: params[:post][:content])
 
