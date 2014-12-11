@@ -78,16 +78,27 @@ var User = {
 				//response 0 <=> "I don't follow U"
 				//response 1 <=> "I follow U *sing*"  
 				if(response == "0"){
-					$(link).html("Suivre");
+					if( $(".sugg-follow")[0] ) {
+						console.log('coucou');
+						$(link).html("+");
+					} else {
+						console.log('pas coucou');
+						$(link).html("Suivre");
+					}
+					// $(link).html("Suivre");
 					$(link).data("state", "1");
 				}
 				else if(response == "1"){
-					$(link).html("Ne plus suivre");
+					if( $(".sugg-follow")[0] ) {
+						console.log('coucou');
+						$(link).html("-");
+					} else {
+						console.log('pas coucou');
+						$(link).html("Ne plus suivre");
+					}
+					// $(link).html("Ne plus suivre");
 					$(link).data("state", "0");
-					
 				}
-
-				console.log($(link).data("state"));
 				
 			}).error(function(e){
 				console.log(e);
@@ -110,7 +121,6 @@ $(".follow-container").on("click","a.js-follow", function(e){
 	e.preventDefault();
 	id = $(this).data("id");
 	state = $(this).data("state");
-	console.log(id);
 
 	User.follow(this, id, state);
 })
