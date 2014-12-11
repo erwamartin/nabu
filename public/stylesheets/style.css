@@ -901,7 +901,6 @@ input[name="post_user_id"] {
 
 .bookmark {
   display: inline-block;
-  margin-left: 12px;
   margin-top: 5px;
 }
 
@@ -916,6 +915,23 @@ input[name="post_user_id"] {
 
 .remove-fav {
   fill: gold;
+}
+
+.repost-icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.do-repost {
+  fill: rgb(195, 195, 195);
+} 
+
+.undo-repost {
+  fill: #fe6258;
+}
+
+.nice-anim {
   -webkit-animation: addFav .5s ease-out 0;
      -moz-animation: addFav .5s ease-out 0;
       -ms-animation: addFav .5s ease-out 0;
@@ -1141,38 +1157,52 @@ font-size: 1em;
   border: 1px solid #ff7461;
 }
 
-.profile-follow-button--small, .profile-unfollow-button--small {
-  padding: 4px 10px;
+.sugg-follow, .sugg-unfollow {
+  padding: 5px;
   text-align: center;
   display: inline-block;
-  -webkit-border-radius:2px;
-  border-radius:2px;
-  margin: 5px ;
-  color: #fff;
+  -webkit-border-radius:20px;
+  border-radius:20px;
+  margin: 5px;
+  height: 20px;
+  line-height: 10px;
+  width: 20px;
   text-transform: uppercase;
-    transition: all 0.3s;
   -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   border: 1px solid #ff7461;
+  position: absolute;
+  right: 15px;
 }
 
-
-.profile-follow-button:hover, .profile-follow-button--small:hover {
+.profile-follow-button:hover, .sugg-follow:hover {
   background: #ff7461;
   text-decoration: none;
+  color: #fff !important;
 }
 
-.profile-unfollow-button, .profile-unfollow-button--small {
+.profile-unfollow-button, .sugg-unfollow {
   background-color: #ff7461;
 }
 
-.profile-unfollow-button:hover, .profile-unfollow-button--small:hover {
+.profile-unfollow-button:hover, .sugg-unfollow:hover {
   border: 1px solid #ff7461;
   background-color: transparent;
   text-decoration: none;
 }
 
+.profile-follow-pic {
+  position: absolute;
+}
+
+.profile-follow-name {
+  display: inline-block;
+  padding:  9px 20px 9px 40px;
+}
+
 /*----  suggestions ----*/
 .follow-container {
+  position: relative;
   margin-bottom: 20px;
 }
 
@@ -1180,10 +1210,8 @@ font-size: 1em;
   position: relative;
 }
 
-.title-button {
-  position: absolute;
-  right: 10px;
-}
+
+
 
 /* =============================================================================
    Non-semantic helper classes
