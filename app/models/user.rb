@@ -39,4 +39,31 @@ class User < ActiveRecord::Base
     User.create(params[:user])
   end
 
+  def feed
+    following_ids = "SELECT following_id FROM relations
+                     WHERE  follower_id = :user_id"
+    Post.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id).reverse_order
+  end
+
+  def get_suggest_users
+    User.where("id != ?", id).order("RAND()").limit(2)
+  end
+
+  def get_suggest_posts
+    Post.where("id != ?", id).order("RAND()").limit(2)
+  end
+
+  def follow(id)
+    active_relationships.create(following_id: id)
+  end
+
+  def unfollow(id)
+    active_relationships.find_by(following_id: id).destroy
+  end
+
+  def self.search_users_username_like(search)
+    User.where(["username LIKE ?", "%#{search}%"])
+  end
+
 end

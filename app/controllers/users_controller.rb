@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Devise::Controllers::Helpers
 
-  before_filter :set_data_user
+  before_filter :set_data_user, only: [:bookmarks, :display_user]
 
 
 # Sync method
@@ -28,22 +28,17 @@ class UsersController < ApplicationController
     
   end
 
-  def get_suggest_users
-  	@users = User.where("id != ?", current_user.id).order("RAND()").limit(2)
-  	
-  	#(!@users.empty?) ? (render partial: "suggestusers") : (render text: "no suggest")
-  end
 #end
 
 # AJAX method
   def follow
-    relation = current_user.active_relationships.create(following_id: params[:id])
+    relation = current_user.follow(params[:id])
     #relation = Relation.new(follower_id: current_user.id, following_id: params[:id])
     (relation.save) ? (render text: "1") : (render text: "no")
   end
 
   def unfollow
-    relation = current_user.active_relationships.find_by(following_id: params[:id]).destroy
+    relation = current_user.unfollow(params[:id])
     (relation.destroy) ? (render text: "0") : (render text: "no")
   end
 
