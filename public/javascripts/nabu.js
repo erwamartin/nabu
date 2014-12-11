@@ -166,6 +166,37 @@ $(".js-bookmark").on("click", function(e){
 	})
 });
 
+$(".js-repost").on("click", function(e){
+	e.preventDefault();
+	var link = this;
+	var id = $(this).data("id");
+	var state = $(this).data("state");
+	
+	if(state == "0")
+		url = "/posts/add_repost/"+id;
+	else if(state == "1")
+		url = "/posts/remove_repost/"+id;
+
+	console.log(url);
+	
+	$.ajax({
+		url:url,
+		method:"get",
+	})
+	.success(function(response){
+		if(response == "0"){
+			$(link).children().attr("class", "js-repost-icon repost-icon do-repost");
+			$(link).data("state", "0");
+		}else if(response == "1"){
+			$(link).children().attr("class", "js-repost-icon repost-icon undo-repost nice-anim");
+			$(link).data("state", "1");
+			
+		}
+	}).error(function(e){
+		console.log(e);
+	})
+});
+
 window.setTimeout(function() {
   $(".alert").fadeTo(500, 0).slideUp(500, function(){
       $(this).remove();
