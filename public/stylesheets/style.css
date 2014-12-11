@@ -890,6 +890,78 @@ input[name="post_user_id"] {
   font-weight: normal;
 }
 
+.bookmark {
+  display: inline-block;
+  margin-left: 12px;
+  margin-top: 5px;
+}
+
+.fav {
+  width: 25px;
+  display: inline-block;
+}
+
+.add-fav {
+  fill: rgb(195, 195, 195);
+}
+
+.remove-fav {
+  fill: gold;
+  -webkit-animation: addFav .5s ease-out 0;
+     -moz-animation: addFav .5s ease-out 0;
+      -ms-animation: addFav .5s ease-out 0;
+       -o-animation: addFav .5s ease-out 0;
+          animation: addFav .5s ease-out 0;
+}
+
+@-webkit-keyframes addFav {
+    0% {
+      -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    }
+    60% {
+      -webkit-transform: scale(1.4);
+       -moz-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+         -o-transform: scale(1.4);
+            transform: scale(1.4);
+    }
+    0% {
+      -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    }
+}
+
+@keyframes addFav {
+    0% {
+      -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    }
+    60% {
+      -webkit-transform: scale(1.4);
+       -moz-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+         -o-transform: scale(1.4);
+            transform: scale(1.4);
+    }
+    0% {
+      -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    }
+}
+
 /*------ COLONNE DE DROITE ------ */
 .col-3-12 h2 img,  .col-4-12 h2 img{
   float: right;

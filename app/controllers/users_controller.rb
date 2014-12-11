@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   	@target_user = User.find_by_username(params[:username])
   	@followings = @target_user.following
     @followers = @target_user.followers
-    @posts = Post.where("user_id = ?", @target_user.id)
+    @nb_posts = @target_user.posts.count
+    @posts = @target_user.posts.reverse_order
   end
 
   def get_followings(target_user = current_user)
