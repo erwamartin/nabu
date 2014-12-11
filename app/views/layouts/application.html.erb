@@ -31,7 +31,9 @@
              <span class="user-description">" <%= @target_user.description %> "</span>
           <% end %>
           <div class="posts-number">
-            <span class="follow-number"><%= @nb_posts %></span> posts
+            <a href="/users/<%= @target_user.username %>">
+              <span class="follow-number"><%= @nb_posts %></span> posts
+            </a>
           </div>
           <div class="bookmarks-number">
             <a href="/users/<%= @target_user.username %>/bookmarks">

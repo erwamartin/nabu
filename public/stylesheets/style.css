@@ -570,8 +570,17 @@ a.user-name {
   color:#cdcdcd;
 }
 
-.posts-number {
+.posts-number, .bookmarks-number {
+  display: inline-block;
+  width: 45%;
   margin: 0 0 30px 0;
+}
+
+.posts-number a, .bookmarks-number a {
+  color: #fff;
+}
+.posts-number a:hover, .posts-number a:visited, .bookmarks-number a:hover, .bookmarks-number a:visited {
+  text-decoration: none;
 }
 
 .follow-numbers-container {
