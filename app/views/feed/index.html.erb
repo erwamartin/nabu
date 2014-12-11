@@ -1,70 +1,59 @@
-      <div class="col-7-12"><!-- CENTRAL COLUMN -->
-         <div class="content" id="new-post"><!-- NEW POST -->
-            <div>
-            <%= form_for :post, url: "/", :html => {name: 'post-article', id: 'post-article'} do |f| %>
-              <%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu", :class => "form-field", :value=>"http://" %>
-              <div id="form-extended">
-                <%= f.text_field :content, :id=>"desc", :placeholder=>"Message accompagnant le contenu", :class => "form-field" %>
-                <div class="post-hashtag"><%= f.text_field :hashtag, :class => "post-hashtag form-field" %></div>
-                <%= f.submit "Envoi", :class => "form-field" %>
-              </div>
-            <% end %>
-           </div>
-         </div><!-- END NEW POST -->
-       <div class="content"><!-- FEED -->
-          <section id="zone_post">
-            <% @posts.reverse_each do |post| %>
-              
-            <div class="post-feed clearfix">
-              <div class="post-feed-inner clearfix">
-                <div class="post-feed-content col-2-12">
-                  <a href="/users/<%= @target_user.username %>" class="clearfix"><%= image_tag(@target_user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>
-                </div>
-                <div class="post-feed-content col-9-12">
-                  <a href="/users/<%= @target_user.username %>" class="name"><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
-                  <%= link_to post.content, post, :class => "post-desc" %> <%= link_to post.url, post.url, :class => "post-url" %> <a href="<%= root_path %>search?q=%23<%= post.hashtag.name %>" class="post-hash">#<%= post.hashtag.name %></a> <br>
-                  <%= link_to "Permalien",  post, :class => "label label--permalink"  %>
-                </div>
-              </div>
-            </div>
+<% if @current_user %>
+  <div class="col-7-12"><!-- CENTRAL COLUMN -->
+     <div class="content" id="new-post"><!-- NEW POST -->
+        <div>
+        <%= form_for :post, url: "/", :html => {name: 'post-article', id: 'post-article'} do |f| %>
+          <%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu", :class => "form-field", :value=>"http://" %>
+          <div id="form-extended">
+            <%= f.text_field :content, :id=>"desc", :placeholder=>"Message accompagnant le contenu", :class => "form-field" %>
+            <div class="post-hashtag"><%= f.text_field :hashtag, :class => "post-hashtag form-field" %></div>
+            <%= f.submit "Envoi", :class => "form-field" %>
+          </div>
+        <% end %>
+       </div>
+     </div><!-- END NEW POST -->
+     <div class="content"><!-- FEED -->
+        <section id="zone_post">
+          <% if @current_user %>    
+            <%= render partial: "posts/posts_list" %>
           <% end %>
-          </section>
-         </div><!-- END FEED -->
-      </div><!-- END CENTRAL COLUMN -->
+        </section>
+       </div><!-- END FEED -->
+    </div><!-- END CENTRAL COLUMN -->
 
-      <div class="col-3-12"><!--  RIGHT COLUMN -->
-        <div class="content">
-          <h2>Suggestions</h2>
-          <h3 class="full title-rel">
-            <img src="img/icons/users_suggestions.svg" class="icon-titles" alt="">
-            Utilisateurs
-            <a href="#" id="suggest_follows_button" class="title-button">
-              <img src="img/icons/sync.svg" class="icon-sync" alt="">
-            </a>
-          </h3>
-          
-          <div id="suggest_follow" class="follow-div">
-            <%= render partial: "suggestusers" %>
-          </div>
-          <h3 class="full title-rel">
-            <img src="img/articles.png" class="icon-titles" alt="">
-            Articles
-            <a href="#" id="suggest_articles_button" class="title-button">
-              <img src="img/icons/sync.svg" class="icon-sync" alt="">
-            </a>
-          </h3>
-          <div class="suggestion-article-wrapper">
-            <div id="suggest_articles" class="suggest-article">
-              <%= render partial: "suggestposts" %>
-            </div>
-          </div>
-        </div> <!-- END CONTENT SUGGESTIONS -->
-      </div><!-- END RIGHT COLUMN -->
+  <div class="col-3-12"><!--  RIGHT COLUMN -->
+    <div class="content">
+      <h2>Suggestions</h2>
+      <h3 class="full title-rel">
+        <img src="img/icons/users_suggestions.svg" class="icon-titles" alt="">
+        Utilisateurs
+        <a href="#" id="suggest_follows_button" class="title-button">
+          <img src="img/icons/sync.svg" class="icon-sync" alt="">
+        </a>
+      </h3>
+      
+      <div id="suggest_follow" class="follow-div">
+        <%= render partial: "suggestusers" %>
+      </div>
+      <h3 class="full title-rel">
+        <img src="img/articles.png" class="icon-titles" alt="">
+        Articles
+        <a href="#" id="suggest_articles_button" class="title-button">
+          <img src="img/icons/sync.svg" class="icon-sync" alt="">
+        </a>
+      </h3>
+      <div class="suggestion-article-wrapper">
+        <div id="suggest_articles" class="suggest-article">
+          <%= render partial: "suggestposts" %>
+        </div>
+      </div>
+    </div> <!-- END CONTENT SUGGESTIONS -->
+  </div><!-- END RIGHT COLUMN -->
 
+  <script>
+    // this is important for IEs
+    var polyfilter_scriptpath = 'javascripts/';
+  </script>
 
-
-<script>
-  // this is important for IEs
-  var polyfilter_scriptpath = 'javascripts/';
-</script>
+<% end %>
 

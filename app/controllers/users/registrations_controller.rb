@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_account_update_params, only: [:update]
   before_filter :get_info_user, only: [:update, :edit]
 
-  skip_before_filter :check_authentification
+  #skip_before_filter :check_authentification
 
   # GET /resource/sign_up
   def new
@@ -68,4 +68,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_sign_up_path_for(resource)
+    puts "=====> SIGN UP"
+    puts resource.errors.full_messages.size()
+    super(resource)
+  end
 end

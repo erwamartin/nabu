@@ -1109,6 +1109,7 @@ font-size: 1em;
 .list-follow li a{
   display: block;
   padding: 10px 10px 10px 40px;
+  color:#fff;
 }
 .list-follow li img{
   position: absolute;

@@ -1,6 +1,5 @@
 
 <div class="post-feed single-view col-10-12">
-<% object = LinkThumbnailer.generate(@post.url) %>
   <div class="post-feed-inner clearfix">
   	<div class="post-feed-content col-1-12">
   		<a href="/users/<%= @post.user.username %>" class="clearfix"><%= image_tag(@post.user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>
@@ -13,7 +12,11 @@
     	<div class="post-desc"><%= @post.content %> </div> 
     	<%= link_to @post.url, @post.url, :class => "post-url" %> <a href="<%= root_path %>search?q=%23<%= @post.hashtag.name %>" class="post-hash">#<%= @post.hashtag.name %></a> <br>
 	    <div>
-	      <%= link_to image_tag(object.images.first.src.to_s, :alt =>  object.title, :class =>"res centered post-picture"), @post.url, :class => "post-desc" %>
+      <% if @apercu_ok %>
+        <%  if @apercu.images.first %>
+  	      <%= link_to image_tag(@apercu.images.first.src.to_s, :alt =>  @apercu.title, :class =>"res centered post-picture"), @post.url, :class => "post-desc" %>
+        <% end %>
+      <% end %>
 	    </div>
     	<%= link_to "Supprimer",  @post, :method => :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?' }, :class => "label label--delete"  %>
 

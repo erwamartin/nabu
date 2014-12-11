@@ -6,14 +6,16 @@ Rails.application.routes.draw do
   root 'feed#index'
   post '/' => 'posts#create'
   get 'users/:username' => 'users#display_user', as: 'profile'
+  get 'users/:username/bookmarks' => 'users#bookmarks#', as: 'bookmarks'
 
   get '/search' => 'search#search'
-
 
   # AJAX babe
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
 
+  get 'posts/add_bookmark/:id' => 'posts#add_bookmark' 
+  get 'posts/remove_bookmark/:id' => 'posts#remove_bookmark'
 
   get 'users/suggestusers' => 'users#get_suggest_users'
 

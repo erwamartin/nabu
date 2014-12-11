@@ -10,8 +10,12 @@ class User < ActiveRecord::Base
   has_many :passive_relationships, class_name:  "Relation",
                                    foreign_key: "following_id",
                                    dependent:   :destroy
-  has_many :following, through: :active_relationships,  source: :following
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :following, through: :active_relationships,  source: :following, dependent:   :destroy
+  has_many :followers, through: :passive_relationships, source: :follower, dependent:   :destroy
+
+  has_many :bookmarks
+  #has_many :posts, through: :bookmarks, as: :bookmarks_posts 
+  has_many :bookmarks_posts, :through=> :bookmarks, :class_name => 'Post', :foreign_key => 'post_id', :source => :post
 
   has_attached_file :picture, :styles => { :sidebar => "480x300>", :small => "300x300>", :thumb => "100x100#"  },
   				  :default_url => "/assets/default/:style/default.jpg",

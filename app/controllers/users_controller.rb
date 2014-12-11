@@ -3,23 +3,29 @@ class UsersController < ApplicationController
 
 
 # Sync method
+  def bookmarks
+    @target_user = User.find_by_username(params[:username])
+    @posts = @target_user.bookmarks_posts
+  end
+
   def display_user
   	@target_user = User.find_by_username(params[:username])
   	@followings = @target_user.following
     @followers = @target_user.followers
     @nb_posts = @target_user.posts.count
+    @nb_bookmarks = @target_user.bookmarks_posts.count
     @posts = @target_user.posts.reverse_order
   end
 
   def get_followings(target_user = current_user)
-    @users = current_user.following
-    (!@users.empty?) ? (render partial: "feed/suggestusers") : (render text: "no followings")
+    @users = target_user.following
+    (!@users.empty?) ? (render partial: "partial/follow") : (render text: "no followings")
     
   end
 
   def get_followers(target_user = current_user)
-    @users = current_user.follower
-    (!@users.empty?) ? (render partial: "feed/suggestusers") : (render text: "no followings")
+    @users = target_user.follower
+    (!@users.empty?) ? (render partial: "partial/follow") : (render text: "no followers")
     
   end
 
@@ -41,7 +47,6 @@ class UsersController < ApplicationController
     relation = current_user.active_relationships.find_by(following_id: params[:id]).destroy
     (relation.destroy) ? (render text: "0") : (render text: "no")
   end
-
 
 #end
 
