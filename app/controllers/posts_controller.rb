@@ -9,8 +9,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-      @apercu = LinkThumbnailer.generate(@post.url) 
+    begin
+      @apercu = LinkThumbnailer.generate(@post.url)
       @apercu_ok = true
+    rescue SocketError => e
+      @apercu_ok = false
+    end
   end
 
 

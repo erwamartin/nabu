@@ -9,7 +9,10 @@
       </div>
       <div class="post-feed-content col-9-12">
         <a href="/users/<%= post.user.username %>" class="name"><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
-        <%= link_to post.content, post, :class => "post-desc" %> <%= link_to post.url, post.url, :class => "post-url" %> <a href="<%= root_path %>search?q=%23<%= post.hashtag.name %>" class="post-hash">#<%= post.hashtag.name %></a> <br>
+        <%= link_to post.content, post, :class => "post-desc" %> <%= link_to post.url, post.url, :class => "post-url" %>
+        <% if post.hashtag.name.length > 0 %>
+          <a href="<%= root_path %>search?q=%23<%= post.hashtag.name %>" class="post-hash">#<%= post.hashtag.name %></a><br>
+        <% end %>
         <%= link_to "Permalien",  post, :class => "label label--permalink"  %>
       </div>
     </div>
