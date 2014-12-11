@@ -80,6 +80,8 @@ fr:
         password: Mot de passe
         password_confirmation: Confirmation
         remember_me: Se souvenir de moi
+        background: Arrière plan
+        picture: Photo de profil
   datetime:
     distance_in_words:
       half_a_minute: "moins d'une minute"
