@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   	@followings = @target_user.following
     @followers = @target_user.followers
     @nb_posts = @target_user.posts.count
+    @nb_bookmarks = @target_user.bookmarks_posts.count
     @posts = @target_user.posts
   end
 
