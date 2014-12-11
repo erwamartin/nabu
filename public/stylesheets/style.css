@@ -1074,7 +1074,7 @@ font-size: 1em;
   margin-bottom: 10px;
 }
 .suggest-article ul li::before{
-  content: "•";
+  content: "\25CF";
   color: #ff7461;
   padding-right: 10px;
 }
@@ -1209,8 +1209,6 @@ font-size: 1em;
 .title-rel {
   position: relative;
 }
-
-
 
 
 /* =============================================================================
