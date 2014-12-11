@@ -1,4 +1,8 @@
-<% @posts.find_each do |post| %>
+<% @posts.each do |post| %>
+  <% if post.is_a? Repost %>
+  <% repost_user = post.user %>
+  <% post = post.post %>
+  <% end %>
   <div class="post-feed clearfix">
     <div class="post-feed-inner clearfix">
       <div class="post-feed-content col-2-12">
@@ -17,6 +21,12 @@
       <div class="post-feed-content col-9-12">
         <a href="/users/<%= post.user.username %>" class="name"><%= post.user.username %></a> - Il y a <%= time_ago_in_words(post.created_at) %><br>
         <%= link_to post.content, post, :class => "post-desc" %> <%= link_to post.url, post.url, :class => "post-url" %>
+        <% if repost_user %>
+          <div>
+            Reposté par 
+            <a href="/users/<%= repost_user.username %>" class="clearfix"><%= repost_user.username %></a>
+          </div>
+        <% end %>
         <% if post.hashtag.name.length > 0 %>
           <a href="<%= root_path %>search?q=%23<%= post.hashtag.name %>" class="post-hash">#<%= post.hashtag.name %></a><br>
         <% end %>

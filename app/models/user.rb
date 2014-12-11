@@ -42,10 +42,13 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    following_ids = "SELECT following_id FROM relations
-                     WHERE  follower_id = :user_id"
-    Post.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id).reverse_order
+    following_ids = "SELECT following_id FROM relations WHERE  follower_id = :user_id"
+    posts = Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+    
+    reposts = Repost.where("user_id IN (#{following_ids})", user_id: id)
+    
+    feed_posts = posts + reposts
+    feed_posts.sort_by(&:created_at).reverse!
   end
 
   def get_suggest_users
