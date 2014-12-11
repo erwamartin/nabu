@@ -79,24 +79,20 @@ var User = {
 				//response 1 <=> "I follow U *sing*"  
 				if(response == "0"){
 					if( $(".sugg-follow")[0] ) {
-						console.log('coucou');
 						$(link).html("+");
+						$(link).removeClass("nice-anim");
 					} else {
-						console.log('pas coucou');
 						$(link).html("Suivre");
 					}
-					// $(link).html("Suivre");
 					$(link).data("state", "1");
 				}
 				else if(response == "1"){
 					if( $(".sugg-follow")[0] ) {
-						console.log('coucou');
+						$(link).addClass("nice-anim");
 						$(link).html("-");
 					} else {
-						console.log('pas coucou');
 						$(link).html("Ne plus suivre");
 					}
-					// $(link).html("Ne plus suivre");
 					$(link).data("state", "0");
 				}
 				

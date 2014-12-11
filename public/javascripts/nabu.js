@@ -157,7 +157,7 @@ $(".js-bookmark").on("click", function(e){
 			$(link).children().attr("class", "js-fav fav add-fav");
 			$(link).data("state", "0");
 		}else if(response == "1"){
-			$(link).children().attr("class", "js-fav fav remove-fav");
+			$(link).children().attr("class", "js-fav fav remove-fav nice-anim");
 			$(link).data("state", "1");
 			
 		}

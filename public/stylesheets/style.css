@@ -901,7 +901,6 @@ input[name="post_user_id"] {
 
 .bookmark {
   display: inline-block;
-  margin-left: 12px;
   margin-top: 5px;
 }
 
@@ -916,6 +915,23 @@ input[name="post_user_id"] {
 
 .remove-fav {
   fill: gold;
+}
+
+.repost-icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.do-repost {
+  fill: rgb(195, 195, 195);
+} 
+
+.undo-repost {
+  fill: #fe6258;
+}
+
+.nice-anim {
   -webkit-animation: addFav .5s ease-out 0;
      -moz-animation: addFav .5s ease-out 0;
       -ms-animation: addFav .5s ease-out 0;
