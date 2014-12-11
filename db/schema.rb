@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208161237) do
+ActiveRecord::Schema.define(version: 20141211160543) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20141208161237) do
   end
 
   add_index "relations", ["follower_id", "following_id"], name: "index_relations_on_follower_id_and_following_id", unique: true, using: :btree
+
+  create_table "reposts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                   default: "", null: false

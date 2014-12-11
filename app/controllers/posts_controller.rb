@@ -51,6 +51,16 @@ class PostsController < ApplicationController
     (bookmark.destroy) ? (render text: "0") : (render text: "no")
   end
 
+  def add_repost
+    repost = current_user.reposts.create(post_id: params[:id])
+    (repost.save) ? (render text: "1") : (render text: "no")
+  end
+
+  def remove_repost
+    repost = current_user.reposts.find_by(post_id: params[:id]).destroy
+    (repost.destroy) ? (render text: "0") : (render text: "no")
+  end
+
  private 
     def link_thumb_exceptions
       @apercu_ok = false

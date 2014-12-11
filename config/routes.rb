@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'posts/add_bookmark/:id' => 'posts#add_bookmark' 
   get 'posts/remove_bookmark/:id' => 'posts#remove_bookmark'
 
+  get 'posts/add_repost/:id' => 'posts#add_repost' 
+  get 'posts/remove_repost/:id' => 'posts#remove_repost'
+
   get 'users/suggestusers' => 'users#get_suggest_users'
 
 
