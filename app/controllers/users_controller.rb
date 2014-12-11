@@ -13,7 +13,11 @@ class UsersController < ApplicationController
   def display_user
   	@followings = @target_user.following
     @followers = @target_user.followers
-    @posts = @target_user.posts.reverse_order
+
+    user_posts = @target_user.posts.reverse_order
+    reposts = @target_user.reposts
+    feed_posts = user_posts + reposts
+    @posts = feed_posts.sort_by(&:created_at).reverse!
   end
 
   def get_followings(target_user = current_user)
