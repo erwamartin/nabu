@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     reposts = @target_user.reposts
     feed_posts = user_posts + reposts
     @posts = feed_posts.sort_by(&:created_at).reverse!
+    @nb_posts = @posts.count
   end
 
   def get_followings(target_user = current_user)
