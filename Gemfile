@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,17 +38,22 @@ gem 'spring',        group: :development
 
 gem 'mysql2', '~> 0.3.17'
 
-gem 'devise'
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'pry'
 end
 
-gem 'database_cleaner', '~> 1.3.0'
+gem 'devise'
 
 gem 'paperclip', '~> 4.1'
 
 gem 'link_thumbnailer'
 
-gem 'pry'
+
 
