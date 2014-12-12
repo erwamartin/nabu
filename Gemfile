@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :development do
+  gem 'sqlite3'
   gem 'mysql2', '~> 0.3.17'
 end
 group :production do
