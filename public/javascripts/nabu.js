@@ -153,12 +153,16 @@ $(".js-bookmark").on("click", function(e){
 		method:"get",
 	})
 	.success(function(response){
+		var $bookmarks_number = $('.bookmarks-number .follow-number');
+		var bookmarks_number = parseInt($bookmarks_number.text());
 		if(response == "0"){
 			$(link).children().attr("class", "js-fav fav add-fav");
 			$(link).data("state", "0");
+			if ($('.current_user .bookmarks-number').length > 0) $bookmarks_number.text(bookmarks_number - 1);
 		}else if(response == "1"){
 			$(link).children().attr("class", "js-fav fav remove-fav nice-anim");
 			$(link).data("state", "1");
+			if ($('.current_user .bookmarks-number').length > 0) $bookmarks_number.text(bookmarks_number + 1);
 			
 		}
 	}).error(function(e){
@@ -176,20 +180,22 @@ $(".js-repost").on("click", function(e){
 		url = "/posts/add_repost/"+id;
 	else if(state == "1")
 		url = "/posts/remove_repost/"+id;
-
-	console.log(url);
 	
 	$.ajax({
 		url:url,
 		method:"get",
 	})
 	.success(function(response){
+		var $posts_number = $('.posts-number .follow-number');
+		var posts_number = parseInt($posts_number.text());
 		if(response == "0"){
 			$(link).children().attr("class", "js-repost-icon repost-icon do-repost");
 			$(link).data("state", "0");
+			if ($('.current_user .posts-number').length > 0) $posts_number.text(posts_number - 1);
 		}else if(response == "1"){
 			$(link).children().attr("class", "js-repost-icon repost-icon undo-repost nice-anim");
 			$(link).data("state", "1");
+			if ($('.current_user .posts-number').length > 0) $posts_number.text(posts_number + 1);
 			
 		}
 	}).error(function(e){
