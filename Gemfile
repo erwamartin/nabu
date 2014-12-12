@@ -36,28 +36,24 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :development do
-  gem 'sqlite3'
-  gem 'mysql2', '~> 0.3.17'
-end
+gem 'mysql2', '~> 0.3.17'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
 
-gem 'devise'
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'pry'
 end
 
-gem 'database_cleaner', '~> 1.3.0'
+gem 'devise'
 
 gem 'paperclip', '~> 4.1'
 
 gem 'link_thumbnailer'
-
-gem 'pry'
 
 
 
