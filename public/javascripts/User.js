@@ -77,6 +77,8 @@ var User = {
 				console.log(response);
 				//response 0 <=> "I don't follow U"
 				//response 1 <=> "I follow U *sing*"  
+				var $followings_number = $('#stats-following .follow-number');
+				var followings_number = parseInt($followings_number.text());
 				if(response == "0"){
 					if( $(".sugg-follow")[0] ) {
 						$(link).html("+");
@@ -85,6 +87,7 @@ var User = {
 						$(link).html("Suivre");
 					}
 					$(link).data("state", "1");
+					$followings_number.text(followings_number - 1);
 				}
 				else if(response == "1"){
 					if( $(".sugg-follow")[0] ) {
@@ -94,6 +97,7 @@ var User = {
 						$(link).html("Ne plus suivre");
 					}
 					$(link).data("state", "0");
+					$followings_number.text(followings_number + 1);
 				}
 				
 			}).error(function(e){
