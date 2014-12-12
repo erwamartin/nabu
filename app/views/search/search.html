@@ -1,7 +1,6 @@
-<div class="results-wrapper col-10-12 clearfix">
 <% if @posts || @users %>
-  <% if @users %>
-
+  <% if @users %>  
+  <div class="results-wrapper col-10-12 clearfix">
     <p class="results-info"><%= @users.size %> utilisateur<%= @users.size > 1 ? "s" : "" %> correspond<%= @users.size > 1 ? "ent" : "" %> à votre recherche</p>
 
     <% @users.reverse_each do |user| %>
@@ -24,10 +23,10 @@
         <div class="bounce3"></div>
       </div>
     </div>
-</div>
-<div class="results-wrapper col-10-12 clearfix">
+  </div>
+  <% end %>
   <% if @posts %>
-
+  <div class="results-wrapper col-10-12 clearfix">
     <p class="results-info"><%= @posts.size %> post<%= @posts.size > 1 ? "s" : "" %> correspond<%= @posts.size > 1 ? "ent" : "" %> à votre recherche</p>
 
     <%= render partial: "posts/posts_list" %>
@@ -43,11 +42,10 @@
         <div class="bounce3"></div>
       </div>
     </div>
-
+  </div>
   <% end %>
-  
-<% end %>
-  <% else %>
+<% else %>
+  <div class="results-wrapper col-10-12 clearfix">
     <p>Aucun résultat</p>
-  <% end %>
-</div>
+  </div>
+<% end %>
