@@ -51,6 +51,13 @@ header img{
     }
 }
 
+/* SIGN UP FORM */
+.alert-error p{
+	color: #c0392b;
+	font-weight: bold;
+	font-size: 0.750em;
+}
+
 #banner { background: url('../img/bkg-cover.jpg') no-repeat fixed 50% 0; background-size: cover; color: #fff; height: 726px; width: 100%; }
 #bannertext { width: 50%; position: fixed; top: 15%; left: 12%; }
 
