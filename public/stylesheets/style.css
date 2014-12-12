@@ -388,6 +388,22 @@ h3 {
   color: white;
 }
 
+.label-top {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: .8rem;
+  position: absolute;
+  left: 20px;
+  top: -5px;
+  background: #fe6258;
+  color: white;
+}
+
+.label-top a {
+  color: white;
+}
+
+
 /*------ ICONS ET AVATARS ------ */
 .icon-sync {
   width:28px;
