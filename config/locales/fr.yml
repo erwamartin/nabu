@@ -66,13 +66,15 @@ fr:
           attributes:
             password:
               confirmation: "Le mot de passe et la confirmation ne sont pas identiques."
-              too_short: "Mot de passe trop court (caractères minimum: {{count}})."
+              too_short: "Mot de passe trop court (caractères minimum: 8)."
             password_confirmation:
               blank: "Confirmation du mot de passe requise."
               confirmation: "Les mots de passe ne sont pas identiques"
             username:
               taken: "Un utilisateur existe déjà avec ce nom d'utilisateur."
               too_short: "Nom d'utilisateur trop court (8 caractères minimum)."
+            email:
+              taken: "Cet email est déjà utilisé"
   helpers:
     label:
       user:
