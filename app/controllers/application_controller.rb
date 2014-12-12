@@ -59,8 +59,13 @@ class ApplicationController < ActionController::Base
         @followings = current_user.following
         @followers = current_user.followers
         @follows_current_user = current_user.following
-        @nb_posts = current_user.posts.count
         @nb_bookmarks = current_user.bookmarks_posts.count
+
+        user_posts = @target_user.posts.reverse_order
+        reposts = @target_user.reposts
+        feed_posts = user_posts + reposts
+        @posts = feed_posts.sort_by(&:created_at).reverse!
+        @nb_posts = @posts.count
       end
     end
 

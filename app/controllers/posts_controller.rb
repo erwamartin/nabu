@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   rescue_from LinkThumbnailer::Exceptions, with: :link_thumb_exceptions
   rescue_from StandardError::ArgumentError, with: :link_thumb_exceptions
 
-
   # def index
   #   @posts = Post.all
   # end
@@ -13,6 +12,8 @@ class PostsController < ApplicationController
       @apercu = LinkThumbnailer.generate(@post.url)
       @apercu_ok = true
     rescue SocketError => e
+      @apercu_ok = false
+    rescue Timeout::Error
       @apercu_ok = false
     end
   end
@@ -35,10 +36,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
 
-    redirect_to root_path, :notice => "Votre post a bien été supprimé"
+    post = Post.find(params[:id])
+    if post.user == current_user
+      
+      post.destroy
+
+      redirect_to root_path, :notice => "Votre post a bien été supprimé"
+    else
+      redirect_to root_path, :alert => "Vous ne pouvez supprimer ce post"
+    end
   end
 
   def add_bookmark
