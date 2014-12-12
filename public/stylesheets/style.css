@@ -806,18 +806,41 @@ input[name="post_user_id"] {
 /*----- SEARCH RESULTS -------*/
 .results-wrapper {
   background-color: #ffffff;
-  padding: 35px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.results-wrapper .post-feed {
+  background: #FAF9F9;
+  /*border: 1px solid #E0DFDF;*/
 }
 
 .results-info {
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #fe6258;
+  color: black;
 }
 
 .search-result-user {
   display: inline-block;
   margin: 10px 30px;
+}
+
+.btn-load-more {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 2px solid #fe6258;
+    -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-load-more:hover {
+  background: #fe6258;
+  color: white;
+  text-decoration: none;
 }
 
 /*------ FEED/POSTS (Dashboard) ------ */
@@ -1220,6 +1243,10 @@ font-size: 1em;
   height: 30px;
 }
 
+.post-loader--w {
+  background: white;
+}
+
 .spinner {
   margin: 25px auto 0;
   padding-top: 7px;
@@ -1229,6 +1256,8 @@ font-size: 1em;
 
 .transparent {
   opacity: 0;
+    -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .spinner > div {
