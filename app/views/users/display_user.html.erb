@@ -1,4 +1,16 @@
 <div class="col-10-12">
+  <div class="content" id="new-post"><!-- NEW POST -->
+    <div>
+    <%= form_for :post, url: "/", :html => {name: 'post-article', id: 'post-article'} do |f| %>
+      <%= f.text_field :url, :id=>"post_url", :placeholder=>"Insérez une URL pour ajouter un contenu", :class => "form-field", :value=>"http://" %>
+      <div id="form-extended">
+        <%= f.text_field :content, :id=>"desc", :placeholder=>"Message accompagnant le contenu", :class => "form-field" %>
+        <div class="post-hashtag"><%= f.text_field :hashtag, :class => "post-hashtag form-field" %></div>
+        <%= f.submit "Envoi", :class => "form-field" %>
+      </div>
+    <% end %>
+    </div>
+  </div><!-- END NEW POST -->
   <section id="zone_post">
      <%= render partial: "posts/posts_list" %>
   </section>
