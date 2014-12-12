@@ -53,6 +53,8 @@ gem 'devise'
 
 gem 'paperclip', '~> 4.1'
 
+gem 'aws-sdk'
+
 gem 'link_thumbnailer'
 
 

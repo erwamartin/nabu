@@ -50,6 +50,15 @@
     </div>
   <% end %>
 
+  <%= s3_uploader_form callback_url: raffles_url,
+    id: "s3_uploader",
+    acl: "private",
+    callback_param: "direct_upload_url",
+    max_file_size: 40.megabytes do %>
+    <%= file_field_tag :file, multiple: false %>
+  <% end %>
+  <br/>
+
   <h3>Supprimer mon compte</h3>
 
   <div>
