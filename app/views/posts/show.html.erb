@@ -18,8 +18,9 @@
         <% end %>
       <% end %>
 	    </div>
-    	<%= link_to "Supprimer",  @post, :method => :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?' }, :class => "label label--delete"  %>
-
+      <% if @target_user == @post.user %>
+    	  <%= link_to "Supprimer",  @post, :method => :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?' }, :class => "label label--delete"  %>
+      <% end %>
     </div>
   </div>
 </div>
