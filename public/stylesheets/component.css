@@ -82,13 +82,13 @@
 	position: relative;
 	border-radius: 3px;
 	margin: 0 auto;
+	font-size: 0.8em;
 }
 
 .md-content h3 {
 	margin: 0;
 	padding: 0.4em;
 	text-align: center;
-	font-size: 2em;
 	font-weight: 300;
 	color: #828282;
 	background: rgba(0,0,0,0.1);

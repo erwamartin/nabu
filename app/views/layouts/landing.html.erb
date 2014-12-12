@@ -38,20 +38,20 @@
         <h4>A.-Sophie Valleray</h4>
         <div id="As"></div>
       </div>
-      
+
       <div class="col-2-12">
         <h4>Erwan Martin</h4>
         <div id="Erwan"></div>
       </div>
       
       <div class="col-2-12">
-        <h4>Marion Livet</h4>
-        <div id="Marion"></div> 
-      </div>
-      
-      <div class="col-2-12">
         <h4>Lucie Reitz</h4>
         <div id="Lucie"></div>
+      </div>
+
+      <div class="col-2-12">
+        <h4>Marion Livet</h4>
+        <div id="Marion"></div> 
       </div>
       
       
@@ -77,33 +77,33 @@
             <% end %>
 
             <div class="field">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, required: true %>
+              <%= f.label :email %>
+              <%= f.email_field :email, required: true, :class => "form-field--wlabel form-field" %>
             </div>
 
             <div class="field">
-              <%= f.label :username %><br />
-              <%= f.text_field :username %>
+              <%= f.label :username %>
+              <%= f.text_field :username, :class => "form-field--wlabel form-field" %>
             </div>
 
             <div class="field">
               <%= f.label :password %>
               <% if @validatable %>
               <em>(<%= @minimum_password_length %> caractères au minimum)</em>
-              <% end %><br />
-              <%= f.password_field :password, autocomplete: "off", required: true %>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "off", required: true, :class => "form-field--wlabel form-field" %>
             </div>
 
             <div class="field">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :class => "form-field--wlabel form-field" %>
             </div>
 
-            <div class="actions">
-              <%= f.submit "S'inscrire" %>
+            <div class="actions align-center">
+              <%= f.submit "S'inscrire", :class => "form-field" %>
             </div>
           <% end %>
-          <button class="md-close">Close me!</button>
+          <button class="md-close hidden">Close me!</button>
         </div>
       </div>
     </div>
@@ -118,28 +118,28 @@
             <%= devise_error_messages! %>
 
             <div class="field">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, required: true %>
+              <%= f.label :email %>
+              <%= f.email_field :email, required: true, :class => "form-field--wlabel form-field" %>
             </div>
 
             <div class="field">
-              <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "off", required: true %>
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "off", required: true, :class => "form-field--wlabel form-field" %>
             </div>
 
             <% if devise_mapping.rememberable? -%>
               <div class="field">
                 <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+                <%= f.label :remember_me, :class => "auto" %>
               </div>
             <% end -%>
 
-            <div class="actions">
-              <%= f.submit "Se connecter" %>
+            <div class="actions align-center">
+              <%= f.submit "Se connecter", :class => "form-field" %>
             </div>
           <% end %>
                     
-          <button class="md-close">Close me!</button>
+          <button class="md-close hidden">Close me!</button>
         </div>
       </div>
     </div>
