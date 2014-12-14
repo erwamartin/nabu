@@ -172,7 +172,7 @@ var Nabu = {
 				method:"get",
 			})
 			.success(function(response){
-				var followings_number = $('#stats-following .follow-number');
+				var $followings_number = $('#stats-following .follow-number');
 				var followings_number = parseInt($followings_number.text());
 				if(response == "0"){
 					if( $(".sugg-follow")[0] ) {
