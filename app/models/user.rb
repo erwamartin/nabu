@@ -19,19 +19,20 @@ class User < ActiveRecord::Base
   has_many :reposts
   has_many :reposts_posts, :through=> :reposts, :class_name => 'Repost', :foreign_key => 'post_id', :source => :post, :dependent => :destroy
 
-  has_attached_file :picture, :styles => { :sidebar => "480x300>", :small => "300x300>", :thumb => "100x100#"  }
-  				  #:default_url => "/assets/default/:style/default.jpg",
-            #      :url  => "/assets/pictures/:id/:style/:basename.:extension",
-            #      :path => ":rails_root/public/assets/pictures/:id/:style/:basename.:extension"
+  has_attached_file :picture, :styles => { :sidebar => "480x300>", :small => "300x300>", :thumb => "100x100#",
+  				  :default_url => "/assets/default/:style/default.jpg",
+            :url  => "/assets/pictures/:id/:style/:basename.:extension",
+            :path => ":rails_root/public/assets/pictures/:id/:style/:basename.:extension"
+  }
 
 
   validates_attachment_size :picture, :less_than => 5.megabytes
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   has_attached_file :background, :styles => { :thumb => "1000x1000#"  },
-                  :default_url => "/assets/default/:style/default.jpg",
-                  :url  => "/assets/pictures/:id/background/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/pictures/:id/background/:style/:basename.:extension"
+            :default_url => "/assets/default/:style/default.jpg",
+            :url  => "/assets/pictures/:id/background/:style/:basename.:extension",
+            :path => ":rails_root/public/assets/pictures/:id/background/:style/:basename.:extension"
                   
 
   validates_attachment_size :background, :less_than => 5.megabytes
