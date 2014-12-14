@@ -1,29 +1,32 @@
 class UsersController < ApplicationController
   include Devise::Controllers::Helpers
 
-  before_filter :set_data_user, only: [:bookmarks, :display_user]
+  before_filter :set_data_user, only: [:bookmarks, :display_user, :get_feed_user]
 
 
 # Sync method
 
   def bookmarks
-    @posts = @target_user.bookmarks_posts
+    @posts = @target_user.bookmarks_posts.reverse_order.first(3)
   end
 
   def display_user
   	@followings = @target_user.following
     @followers = @target_user.followers
+    @posts = @target_user.posts.reverse_order.first(5)
   end
+
+
 
   def get_followings(target_user = current_user)
     @users = target_user.following
-    (!@users.empty?) ? (render partial: "partial/follow") : (render text: "no followings")
+    (!@users.empty?) ? (render partial: "users/follow") : (render text: "no followings")
     
   end
 
   def get_followers(target_user = current_user)
     @users = target_user.follower
-    (!@users.empty?) ? (render partial: "partial/follow") : (render text: "no followers")
+    (!@users.empty?) ? (render partial: "users/follow") : (render text: "no followers")
     
   end
 
@@ -39,6 +42,16 @@ class UsersController < ApplicationController
   def unfollow
     relation = current_user.unfollow(params[:id])
     (relation.destroy) ? (render text: "0") : (render text: "no")
+  end
+
+  def get_feed_user
+    @posts = @target_user.posts.where("id < ?", params[:id_last_post]).reverse_order.first(5)
+    (!@posts.empty?) ? (render partial: "posts/posts_list") : (render text: "0")
+  end
+
+  def get_bookmarks_user
+    @posts = @target_user.bookmarks_posts.where("post_id < ?", params[:id_last_post]).reverse_order.first(3)
+    (!@posts.empty?) ? (render partial: "posts/posts_list") : (render text: "0")
   end
 
 #end

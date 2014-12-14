@@ -3,7 +3,7 @@
   <% repost_user = post.user %>
   <% post = post.post %>
   <% end %>
-  <div class="post-feed clearfix">
+  <div class="post-feed clearfix" data-idpost="<%= post.id %>" data-createdat="<%= post.created_at %>" data-username="<%= post.user.username %>">
     <div class="post-feed-inner clearfix">
       <div class="post-feed-content col-2-12">
         <a href="/users/<%= post.user.username %>" class="clearfix"><%= image_tag(post.user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %></a>

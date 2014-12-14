@@ -1,22 +1,17 @@
 <% if @posts || @users %>
   <% if @users %>  
-  <div class="results-wrapper col-10-12 clearfix">
-    <p class="results-info"><%= @users.size %> utilisateur<%= @users.size > 1 ? "s" : "" %> correspond<%= @users.size > 1 ? "ent" : "" %> à votre recherche</p>
-
-    <% @users.reverse_each do |user| %>
-      <div class="user search-result-user clearfix">
-        <a href="/users/<%= user.username %>" class="name">
-          <%= image_tag(user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
-          <%= user.username %>
-        </a>
+  <div class="results-wrapper col-10-12 clearfix" >
+    <p class="results-info"><%= @users_size %> utilisateur<%= @users_size > 1 ? "s" : "" %> correspond<%= @users_size > 1 ? "ent" : "" %> à votre recherche</p>
+    <div id="div-user">
+      <%= render partial: "users/users_list" %>
+    </div>
+    <% if @users_size > 5 %>
+      <div class="align-center">
+        <a href="#" class="btn-load-more btn-user" data-type="users" data-search="<%= @searched %>">Voir plus</a>
       </div>
     <% end %>
 
-    <div class="align-center">
-      <a href="#" class="btn-load-more">Voir plus</a>
-    </div>
-
-    <div class="post-loader post-loader--w transparent">
+    <div class="post-loader post-loader--w transparent" id="loader-user">
       <div class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
@@ -25,17 +20,19 @@
     </div>
   </div>
   <% end %>
-  <% if @posts %>
+  <% if @posts && @posts_size %>
   <div class="results-wrapper col-10-12 clearfix">
-    <p class="results-info"><%= @posts.size %> post<%= @posts.size > 1 ? "s" : "" %> correspond<%= @posts.size > 1 ? "ent" : "" %> à votre recherche</p>
-
-    <%= render partial: "posts/posts_list" %>
-
-    <div class="align-center">
-      <a href="#" class="btn-load-more">Voir plus</a>
+    <p class="results-info"><%= @posts_size %> post<%= @posts_size > 1 ? "s" : "" %> correspond<%= @posts_size > 1 ? "ent" : "" %> à votre recherche</p>
+    <div id="div-post">
+      <%= render partial: "posts/posts_list" %>
     </div>
+    <% if @posts_size > 5 %>
+      <div class="align-center">
+        <a href="#" class="btn-load-more btn-post" data-type="<%(@searched[0] == "#")?(%>hash<%):(%>posts<%)%>" data-search="<%= @searched %>">Voir plus</a>
+      </div>
+    <% end %>
     
-    <div class="post-loader post-loader--w transparent">
+    <div class="post-loader post-loader--w transparent" id="loader-post">
       <div class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
@@ -44,6 +41,7 @@
     </div>
   </div>
   <% end %>
+
 <% else %>
   <div class="results-wrapper col-10-12 clearfix">
     <p>Aucun résultat</p>

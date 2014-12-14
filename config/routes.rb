@@ -14,13 +14,22 @@ Rails.application.routes.draw do
   get 'users/follow/:id' => 'users#follow' 
   get 'users/unfollow/:id' => 'users#unfollow'
 
+  get '/feed/:id_last_post' => 'feed#get_feed'
+  get '/user/:username/:id_last_post' => 'users#get_feed_user'
+  get '/user/bookmarks/:username/:id_last_post' => 'users#get_bookmarks_user'
+  
   get 'posts/add_bookmark/:id' => 'posts#add_bookmark' 
   get 'posts/remove_bookmark/:id' => 'posts#remove_bookmark'
 
   get 'posts/add_repost/:id' => 'posts#add_repost' 
   get 'posts/remove_repost/:id' => 'posts#remove_repost'
 
-  get 'users/suggestusers' => 'users#get_suggest_users'
+  get 'suggest/suggestusers' => 'feed#get_suggest_users'
+  get 'suggest/suggestposts' => 'feed#get_suggest_posts'
+
+  get '/search/by_hash/:q/:id' => 'search#get_posts_with_hashtags_for_search'
+  get '/search/by_posts/:q/:id' => 'search#get_posts_for_search'
+  get '/search/by_users/:q/:id' => 'search#get_users_for_search'
 
 
   
