@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  rescue_from LinkThumbnailer::Exceptions, with: :link_thumb_exceptions
-  rescue_from StandardError::ArgumentError, with: :link_thumb_exceptions
 
   # def index
   #   @posts = Post.all
@@ -14,6 +12,10 @@ class PostsController < ApplicationController
     rescue SocketError => e
       @apercu_ok = false
     rescue Timeout::Error
+      @apercu_ok = false
+    rescue LinkThumbnailer::Exceptions
+      @apercu_ok = false
+    rescue StandardError::ArgumentError
       @apercu_ok = false
     end
   end
