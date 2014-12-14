@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
   <%= javascript_include_tag :application %>
 </head>
-<body class="<%= @current_user == @target_user ? "current_user" : ""%>>
+<body class="<%= @current_user == @target_user ? "current_user" : ""%>">
 <div id="wrapper" style="background: url('<%= @target_user.background %>') repeat">  
   <% if notice %>
     <div class="alert alert-success"><%= notice %></div>
