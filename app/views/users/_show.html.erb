@@ -1,5 +1,0 @@
-<ul>
-<% @users.each do |user| %>
-    <li><%= user.email %><button class="btn-follow" data-id="<%= user.id %>" data-state=<% (@follows.include?(user.id)) ? ( %>"0"<% ) :( %>"1"<% ) %>><% (@follows.include?(user.id)) ? ( %>unfollow<% ) :( %>follow<% ) %></button></li>
-<% end %>
-</ul>

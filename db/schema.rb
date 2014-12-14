@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20141211160543) do
   end
 
   add_index "relations", ["follower_id", "following_id"], name: "index_relations_on_follower_id_and_following_id", unique: true, using: :btree
+  add_index "relations", ["follower_id"], name: "index_relations_on_follower_id", using: :btree
+  add_index "relations", ["following_id"], name: "index_relations_on_following_id", using: :btree
 
   create_table "reposts", force: true do |t|
     t.integer  "user_id"

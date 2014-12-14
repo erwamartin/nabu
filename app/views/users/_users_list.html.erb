@@ -1,0 +1,8 @@
+    <% @users.each do |user| %>
+      <div class="user search-result-user clearfix" data-iduser="<%= user.id %>">
+        <a href="/users/<%= user.username %>" class="name">
+          <%= image_tag(user.picture.url(:thumb), :class => "avatar-50 avatar-feed") %>
+          <%= user.username %>
+        </a>
+      </div>
+    <% end %>

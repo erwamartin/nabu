@@ -41,14 +41,18 @@ class User < ActiveRecord::Base
     User.create(params[:user])
   end
 
-  def feed
+  def feed(date_last = nil)
     following_ids = "SELECT following_id FROM relations WHERE  follower_id = :user_id"
     posts = Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
     
-    reposts = Repost.where("user_id IN (#{following_ids})", user_id: id)
+    reposts = Repost.where("user_id IN (#{following_ids} OR user_id = :user_id)", user_id: id)
     
     feed_posts = posts + reposts
-    feed_posts.sort_by(&:created_at).reverse!
+    if date_last
+      feed_posts.select { |post| post.created_at < date_last } .sort_by(&:created_at).reverse!.first(5)
+    else
+      feed_posts.sort_by(&:created_at).reverse!.first(5)
+    end
   end
 
   def get_suggest_users
@@ -67,8 +71,13 @@ class User < ActiveRecord::Base
     active_relationships.find_by(following_id: id).destroy
   end
 
-  def self.search_users_username_like(search)
-    User.where(["username LIKE ?", "%#{search}%"])
+  def self.search_users_username_like(search, id_last = nil)
+    id_condition = ""
+    if id_last
+      id_condition = "AND id <"+id_last
+    end
+
+    User.where(["username LIKE ? #{id_condition}", "%#{search}%"])
   end
 
 end
