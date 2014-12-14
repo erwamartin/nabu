@@ -72,10 +72,6 @@
 
             <%= devise_error_messages! %>
 
-            <% if @errors %>
-              <%= @errors.map { |msg| content_tag(:p, msg) }.join %>
-            <% end %>
-
             <div class="field">
               <%= f.label :email %>
               <%= f.email_field :email, required: true, :class => "form-field--wlabel form-field" %>
@@ -115,7 +111,13 @@
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-            <%= devise_error_messages! %>
+            <% if flash %>
+              <div class="alert-error">
+              <% flash.each do |name, msg| %>
+                <%= content_tag :p, msg if msg.is_a?(String) %>
+              <% end %>
+              </div>
+            <% end %>
 
             <div class="field">
               <%= f.label :email %>
