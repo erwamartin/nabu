@@ -1,5 +1,5 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
- 
+
 fr:
   devise:
     confirmations:
@@ -75,6 +75,9 @@ fr:
               too_short: "Nom d'utilisateur trop court (8 caractères minimum)."
             email:
               taken: "Cet email est déjà utilisé"
+            current_password:
+              blank: "Veuillez indiquer votre mot de passe actuel."
+              invalid: "Veuillez vérifier votre mot de passe actuel."
   helpers:
     label:
       user:
