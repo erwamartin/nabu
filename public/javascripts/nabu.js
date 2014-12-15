@@ -170,8 +170,8 @@ var Nabu = {
 				method:"get",
 			})
 			.success(function(response){
-				var $followings_number = $('#stats-following .follow-number');
-				var followings_number = parseInt($followings_number.text());
+				var $followers_number = $('#stats-followers .follow-number');
+				var followers_number = parseInt($followers_number.text());
 				if(response == "0"){
 					if( $(".sugg-follow")[0] ) {
 						$(link).html("+");
@@ -180,7 +180,7 @@ var Nabu = {
 						$(link).html("Suivre");
 					}
 					$(link).data("state", "1");
-					$followings_number.text(followings_number - 1);
+					$followers_number.text(followers_number - 1);
 				}
 				else if(response == "1"){
 					if( $(".sugg-follow")[0] ) {
@@ -190,7 +190,7 @@ var Nabu = {
 						$(link).html("Ne plus suivre");
 					}
 					$(link).data("state", "0");
-					$followings_number.text(followings_number + 1);
+					$followers_number.text(followers_number + 1);
 				}
 				
 			}).error(function(e){
