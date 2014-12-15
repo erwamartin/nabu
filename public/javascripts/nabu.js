@@ -118,8 +118,6 @@ var Nabu = {
   			url = '/search/by_posts/'+search+"/"+id_last;
 		}
 
-		console.log(url);
-
 		$.ajax({
 				url:url,
 				method:"get",
@@ -208,7 +206,6 @@ var Nabu = {
 		})
 		.success(function(data){
 			$("#suggest_articles").html(data);
-			console.log(data);
 		})
 		
 		
@@ -222,7 +219,6 @@ var Nabu = {
 		})
 		.success(function(data){
 			$("#suggest_follow").html(data);
-			console.log(data);
 		})
 		
 		
@@ -249,6 +245,10 @@ $('.btn-load-more').on('click',function(e){
 
 	type = $(this).data("type");
 	search = $(this).data("search");
+	if(search.length < 1)
+		search = "--";
+
+	console.log(search);
 	id_post_new = parseInt($("div.post-feed").last().data("idpost"));
 	id_user_new = parseInt($("div.user").last().data("iduser"));
 	

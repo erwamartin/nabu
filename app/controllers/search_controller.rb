@@ -36,6 +36,9 @@ class SearchController < ApplicationController
 # AJAX
   def get_users_for_search
     search = params[:q]
+    if search == "--"
+      search = ""
+    end
     first_c = search[0]
     if(first_c == "@")
       search = search[1, search.length-1]
@@ -47,6 +50,9 @@ class SearchController < ApplicationController
 
   def get_posts_for_search
     search = params[:q]
+    if search == "--"
+      search = ""
+    end
     hashtag = Hashtag.find_by_name(search)
     (hashtag) ? (id_hashtag = hashtag.id) : (id_hashtag = 0)
 
@@ -57,6 +63,9 @@ class SearchController < ApplicationController
   def get_posts_with_hashtags_for_search
     search = params[:q]
     first_c = search[0]
+    if search == "--"
+      search = ""
+    end
     if(first_c == "#")
       search = search[1, search.length-1]
     end

@@ -48,6 +48,7 @@ class PostsController < ApplicationController
     end
   end
 
+# AJAX
   def add_bookmark
     bookmark = current_user.bookmarks.create(post_id: params[:id])
     (bookmark.save) ? (render text: "1") : (render text: "no")
@@ -67,6 +68,7 @@ class PostsController < ApplicationController
     repost = current_user.reposts.find_by(post_id: params[:id]).destroy
     (repost.destroy) ? (render text: "0") : (render text: "no")
   end
+# end AJAX
 
  private 
     def link_thumb_exceptions
