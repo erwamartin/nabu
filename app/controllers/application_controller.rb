@@ -25,32 +25,6 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  # Tools methods
-
-  def get_followings_array_id
-    following_record = Relation.where(follower_id: current_user.id)
-    followings = []
-
-    following_record.each do |following|
-      followings = followings + [following.following_id]
-    end
-
-    @followings = followings
-
-  end
-
-  def get_followers_array_id
-    follower_record = Relation.where(following_id: current_user.id)
-    followers = []
-
-    follower_record.each do |follower|
-      followers = followers + [follower.follower_id]
-    end
-
-    @followers = followers
-
-  end
-
   private
     def set_data
       if ! current_user.nil?
